@@ -2,5 +2,6 @@
 
 Roles:
 - Thuleanx - Programming
-- Valkoyz, Allidynia: Art
-- Thuleanx, Allidynia: Sound, Music
+- Valkoyz, Allison: Art
+- Thuleanx, Allison: Sound, Music
+- Everyone: FX
