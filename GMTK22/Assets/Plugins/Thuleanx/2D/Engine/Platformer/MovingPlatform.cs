@@ -72,7 +72,7 @@ namespace Thuleanx2D.Engine.Platformer {
 		int MovementTransition() => (int) (Time.time - _Movement_startTime >= timeBetweenCheckpoint ? 
 			MovingPlatformState.SUSTAIN :MovingPlatformState.MOVING);
 		protected virtual int MovementUpdate() {
-			float p = Easing.EaseInOutQuad((Time.time - _Movement_startTime), timeBetweenCheckpoint);
+			float p = EasingFunction.Ease.EaseInOutQuad.Evaluate(0, timeBetweenCheckpoint, Time.time - _Movement_startTime);
 			transform.position = Vector2.Lerp(_Movement_StartPos, checkpoints[_NextCheckpoint].transform.position, p);
 			return -1;
 		}

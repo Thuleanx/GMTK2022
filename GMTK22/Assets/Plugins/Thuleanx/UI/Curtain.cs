@@ -32,7 +32,7 @@ namespace Thuleanx.UI {
 		}
 
 		void Update() {
-			Alpha = Calc.Damp(Alpha, (CurState == State.Closed ? 1f : 0f), lambda, Time.deltaTime);
+			Alpha = Mathx.Damp(Mathf.Lerp, Alpha, (CurState == State.Closed ? 1f : 0f), lambda, Time.deltaTime);
 		}
 	}
 }

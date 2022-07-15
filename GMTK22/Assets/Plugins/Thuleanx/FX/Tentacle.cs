@@ -35,7 +35,7 @@ namespace Thuleanx.FX {
 			segmentPoses = new Vector3[segmentCount];
 			segmentV = new Vector3[segmentCount];
 			originalWiggleRot = wiggleDir.Value.localRotation.eulerAngles.z;
-			randomOffset = Calc.RandomRange(0f, 2*Mathf.PI);
+			randomOffset = Mathx.RandomRange(0f, 2*Mathf.PI);
 		}
 
 		void Update() {

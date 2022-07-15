@@ -30,7 +30,7 @@ namespace Thuleanx.FX {
 		public void ResetTrauma() => Trauma = 0f;
 
 		void Update() {
-			if (!Calc.Approximately(Trauma, 0f)) {
+			if (!Mathx.Approximately(Trauma, 0f)) {
 
 				float shake = Trauma*Trauma;
 
