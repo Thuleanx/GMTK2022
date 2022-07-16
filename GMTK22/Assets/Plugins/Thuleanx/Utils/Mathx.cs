@@ -24,11 +24,15 @@ namespace Thuleanx.Utils {
 
 		public static float RandomRange(Vector2 range) => RandomRange(range.x, range.y);
 
+
 		/// <summary>
 		/// Not inclusive
 		/// </summary>
 		public static int RandomRange(int a, int b)
 			=> (int) (Random.Next(a,b));
+
+
+		public static float Square(float x) => x * x;
 
 		public static Vector2 Rotate(Vector2 root, float rad)
 			=> new Vector2(
