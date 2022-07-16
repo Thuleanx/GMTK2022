@@ -15,20 +15,16 @@ namespace WizOsu.InputSystem {
 		/// <summary>
 		/// Detect the world position that the mouse is pointing at
 		/// </summary>
-		public Vector3 MouseWorldPosition {
-			get {
-				Ray ray = cam.ScreenPointToRay(MousePos);
-				RaycastHit hit;
-				if (Physics.Raycast(ray, out hit, 100f)) 
-					return hit.point;
-				return cam.ScreenToWorldPoint(MousePos);
-			} 
+		public Vector3 MouseWorldPosition(float zPos = 0f) {
+			Vector3 pos = (Vector3) MousePos + Vector3.forward 
+				* (zPos - cam.transform.position.z);
+			return cam.ScreenToWorldPoint(pos);
 		}
 
 		public override void Awake() {
 		}
 
-		public void OnMouse(InputAction.CallbackContext ctx) {
+		public void OnMouseDown(InputAction.CallbackContext ctx) {
 			if (ctx.started) MouseDown = true;
 			else if (ctx.canceled) MouseDown = false;
 		}

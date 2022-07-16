@@ -1,5 +1,51 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1323360894064221035
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9143586152210256042}
+  - component: {fileID: 2513722222098181009}
+  m_Layer: 0
+  m_Name: man_PaintManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9143586152210256042
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1323360894064221035}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7443829172784896798}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2513722222098181009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1323360894064221035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbccfdc7626eb0e43917378ed3bfed3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  texturePaint: {fileID: 4800000, guid: 63cc08e0d7b74b242ab626b6b35d929b, type: 3}
+  extendIslands: {fileID: 4800000, guid: 4a9f1572843cd4744a282f3fe8849456, type: 3}
 --- !u!1 &4605645729059576387
 GameObject:
   m_ObjectHideFlags: 0
@@ -9,8 +55,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 740789567141526218}
-  - component: {fileID: 6052801224347852467}
   - component: {fileID: 2912871149034594071}
+  - component: {fileID: 4964971777216367930}
   m_Layer: 0
   m_Name: man_Input
   m_TagString: Untagged
@@ -33,19 +79,6 @@ Transform:
   m_Father: {fileID: 7443829172784896798}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6052801224347852467
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4605645729059576387}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aabfdac4cb50abb4f98b507474343c92, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  InputBufferTime: 0.2
 --- !u!114 &2912871149034594071
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -74,7 +107,7 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6052801224347852467}
+      - m_Target: {fileID: 4964971777216367930}
         m_TargetAssemblyTypeName: WizOsu.InputSystem.InputManager, Assembly-CSharp
         m_MethodName: OnMousePos
         m_Mode: 0
@@ -90,7 +123,7 @@ MonoBehaviour:
     m_ActionName: Gameplay/MousePos[/Mouse/position]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6052801224347852467}
+      - m_Target: {fileID: 4964971777216367930}
         m_TargetAssemblyTypeName: WizOsu.InputSystem.InputManager, Assembly-CSharp
         m_MethodName: OnMovement
         m_Mode: 0
@@ -104,11 +137,40 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: bf0fa318-cfcd-465b-8fa2-9c59d383a1f1
     m_ActionName: Gameplay/Movement[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4964971777216367930}
+        m_TargetAssemblyTypeName: WizOsu.InputSystem.InputManager, Assembly-CSharp
+        m_MethodName: OnMouseDown
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: ecc60262-e2dc-4fde-b019-7291876a85fb
+    m_ActionName: Gameplay/MouseDown[/Mouse/leftButton]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Gameplay
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &4964971777216367930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4605645729059576387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1dc7bd0f9acbad945bad8cca9a97d43a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InputBufferTime: 0.2
 --- !u!1 &7443829172784896799
 GameObject:
   m_ObjectHideFlags: 0
@@ -139,6 +201,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 740789567141526218}
+  - {fileID: 9143586152210256042}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

@@ -1,6 +1,7 @@
 using UnityEngine;
 
 namespace TNTC.Painting {
+	[RequireComponent(typeof(Renderer))]
 	public class Paintable : MonoBehaviour {
 		const int TEXTURE_SIZE = 1024;
 
@@ -21,7 +22,11 @@ namespace TNTC.Painting {
 		public RenderTexture getSupport() => supportTexture;
 		public Renderer getRenderer() => rend;
 
-		void Start() {
+		void Awake() {
+			rend = GetComponent<Renderer>();
+		}
+
+		void OnEnable() {
 			maskRenderTexture = new RenderTexture(TEXTURE_SIZE, TEXTURE_SIZE, 0);
 			maskRenderTexture.filterMode = FilterMode.Bilinear;
 
@@ -34,8 +39,10 @@ namespace TNTC.Painting {
 			supportTexture = new RenderTexture(TEXTURE_SIZE, TEXTURE_SIZE, 0);
 			supportTexture.filterMode = FilterMode.Bilinear;
 
-			rend = GetComponent<Renderer>();
 			rend.material.SetTexture(maskTextureID, extendIslandsRenderTexture);
+		}
+
+		void Start() {
 
 			PaintManager.instance.initTextures(this);
 		}
