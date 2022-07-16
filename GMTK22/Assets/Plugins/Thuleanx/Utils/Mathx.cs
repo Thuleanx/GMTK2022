@@ -22,6 +22,8 @@ namespace Thuleanx.Utils {
 		public static float RandomRange(float a, float b) 
 			=> (float) Random.NextDouble() * (b-a) + a;
 
+		public static float RandomRange(Vector2 range) => RandomRange(range.x, range.y);
+
 		/// <summary>
 		/// Not inclusive
 		/// </summary>
