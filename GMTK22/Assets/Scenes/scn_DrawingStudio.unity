@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028355, g: 0.22571374, b: 0.30692255, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -700,10 +700,10 @@ MonoBehaviour:
   wandParticles: {fileID: 1820899221}
   paintinOrderSource: Paintings/
   nextScene:
-    Scene: {fileID: 0}
-    SceneName: 
-    sceneIndex: -1
-    sceneEnabled: 0
+    Scene: {fileID: 102900000, guid: ca06d4ad27526164683fd71d370fa014, type: 3}
+    SceneName: scn_Castle
+    sceneIndex: 2
+    sceneEnabled: 1
   PossibleOrders: []
   npcEntrancePos: {fileID: 2065354278}
   npcDestinationPos: {fileID: 364829482}
@@ -734,8 +734,8 @@ MonoBehaviour:
   reputationReward: {x: 0.29404354, y: 1}
   PlayIntro: 0
   introNode: 
-  squireNode: 
-  squireSprite: {fileID: 0}
+  squireNode: AlfredInvite
+  squireSprite: {fileID: 21300000, guid: c8dda3abfb2b84dd3aaa22bbb2a13d6e, type: 3}
   clarisNode: 
 --- !u!4 &229781357
 Transform:
@@ -1274,8 +1274,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 852365111}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6.75, y: 5.35, z: 0}
-  m_LocalScale: {x: 5.5, y: 3.09375, z: 0.34375}
+  m_LocalPosition: {x: 3.95, y: 4.04, z: -2.66}
+  m_LocalScale: {x: 3.5499997, y: 1.9968748, z: 0.22187498}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1857837097}
@@ -1305,7 +1305,7 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
+  m_DynamicOccludee: 0
   m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
@@ -1718,7 +1718,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7781955, y: 1}
+    m_SensorSize: {x: 1.7786117, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
