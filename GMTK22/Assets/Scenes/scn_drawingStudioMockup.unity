@@ -368,6 +368,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wizard: {fileID: 0}
+  npc: {fileID: 0}
+  npcEntrancePos: {fileID: 0}
+  npcDestinationPos: {fileID: 0}
 --- !u!1 &275270452
 GameObject:
   m_ObjectHideFlags: 0
@@ -586,6 +589,24 @@ MonoBehaviour:
   radius: 0.53
   strength: 1
   hardness: 1
+--- !u!1 &1165676823 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5197741485619333855, guid: e31711c0e401f4bd4b05f104e1c0d991,
+    type: 3}
+  m_PrefabInstance: {fileID: 1820899215}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1165676825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1165676823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88015977fdda8458f9cd9e901076c097, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1213147336
 GameObject:
   m_ObjectHideFlags: 0
@@ -829,7 +850,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 15
+      scalar: 13
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -5412,6 +5433,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80e418329fc14b040865ee0c274f587b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  paintingCanvas:
+    enabled: 1
+    value: {fileID: 605607825}
 --- !u!114 &1213147341
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5619,6 +5643,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: pf_Claris
+      objectReference: {fileID: 0}
+    - target: {fileID: 5197741485619333848, guid: e31711c0e401f4bd4b05f104e1c0d991,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6364324372054479691, guid: e31711c0e401f4bd4b05f104e1c0d991,
         type: 3}

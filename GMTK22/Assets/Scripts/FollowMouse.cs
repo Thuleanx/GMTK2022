@@ -1,18 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using WizOsu.InputSystem;
 
-public class FollowMouse : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+namespace WizOsu.Behaviour {
+	public class FollowMouse : MonoBehaviour {
+		InputManager input => InputManager.instance;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+		private void Update() {
+			Vector3 pos = input.MouseWorldPosition();
+
+			transform.position = new Vector3(pos.x, pos.y, -2.43f);
+		}
+	}
 }
