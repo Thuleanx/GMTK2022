@@ -74,14 +74,12 @@ namespace WizOsu.Dialogue {
         {
             IEnumerator PresentLine()
             {
-				GameObject attachedObj = null;
-				if (dialogueLine.CharacterName != null && dialogueLine.CharacterName.Length > 0) {
-					Speaker speaker = SpeakerManager.instance?.GetSpeaker(dialogueLine.CharacterName);
-					attachedObj = speaker.gameObject;
-				}
+				Speaker attachedSpeaker = null;
+				if (dialogueLine.CharacterName != null && dialogueLine.CharacterName.Length > 0) 
+					attachedSpeaker = SpeakerManager.instance?.GetSpeaker(dialogueLine.CharacterName);
 
 				speechBubble.gameObject.SetActive(true);
-				speechBubble.Setup(attachedObj, dialogueLine.TextWithoutCharacterName.Text);
+				speechBubble.Setup(attachedSpeaker, dialogueLine.TextWithoutCharacterName.Text);
 				speechBubble.textObj.maxVisibleCharacters = 0;
 
 				CanvasGroup.DOFade(1f, fadeInTime).From(0).Play();

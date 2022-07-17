@@ -1,15 +1,15 @@
 using UnityEngine;
 using NaughtyAttributes;
 using TMPro;
+using WizOsu.Dialogue;
 
 namespace WizOsu.UI {
 	[ExecuteAlways]
 	[RequireComponent(typeof(RectTransform))]
 	public class SpeechBubble : MonoBehaviour {
-		[SerializeField, ReadOnly] GameObject attachedGameObject = null;
+		[SerializeField, ReadOnly] Speaker attachedSpeaker = null;
 		[SerializeField, Required] public TextMeshProUGUI textObj;
 		[SerializeField] Vector2 padding;
-		[SerializeField] Vector2 offset;
 		RectTransform rectTransform;
 		Canvas canvas;
 
@@ -18,8 +18,8 @@ namespace WizOsu.UI {
 			canvas = GetComponentInParent<Canvas>();
 		}
 
-		public void Setup(GameObject speaker, string text) {
-			attachedGameObject = speaker;
+		public void Setup(Speaker speaker, string text) {
+			attachedSpeaker = speaker;
 			textObj.SetText(text);
 			textObj.ForceMeshUpdate();
 			ResizeToTextContent();
@@ -35,17 +35,17 @@ namespace WizOsu.UI {
 		}
 
 		public void Reposition() {
-			if (attachedGameObject) {
+			if (attachedSpeaker) {
 				Plane plane = new Plane(Vector3.forward, canvas.transform.position);
-				Vector3 screenPoint = Camera.main.WorldToScreenPoint(attachedGameObject.transform.position);
+				Vector3 screenPoint = Camera.main.WorldToScreenPoint(attachedSpeaker.transform.position + (Vector3) attachedSpeaker.offset);
 				Ray ray = Camera.main.ScreenPointToRay(screenPoint);
 				float dist = 0;
 				plane.Raycast(ray, out dist);
 				Vector3 corPos = ray.GetPoint(dist);
-				transform.position = corPos + (Vector3) offset;
+				transform.position = corPos;
 			}
 		}
 
-		private void OnDisable() => attachedGameObject = null;
+		private void OnDisable() => attachedSpeaker = null;
 	}
 }

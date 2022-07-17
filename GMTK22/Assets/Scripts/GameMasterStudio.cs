@@ -34,12 +34,12 @@ namespace WizOsu {
 
 
 		[Header("Game Vars")]
-		[ProgressBar("Reputation", 7f)]
+		[ProgressBar("Reputation", 4f)]
 		public float Reputation = 0;
 		[Range(0, 7f)]
 		public float ReputationRequired = 7f;
-		[MinMaxSlider(0, 20f)]
-		public Vector2 colorChangeRange = Vector2.one;
+		[MinMaxSlider(0, 20f)] public Vector2 colorChangeRange = Vector2.one;
+		[MinMaxSlider(0, 1f)] public Vector2 reputationReward = Vector2.one;
 
 		bool dialogueCompleted;
 
@@ -103,6 +103,11 @@ namespace WizOsu {
 			yield return AnimationManager.instance?.DoBunnyHop(npc.transform, npcDestinationPos.position);
 
 			yield return WaitForDialogue(order.evalNode);
+
+			float impressiveness = Mathf.InverseLerp(1 - order.successThreshold, 1, 
+				Mathf.Max(1 - score, 1 - order.successThreshold));
+
+			Reputation += Mathf.Lerp(reputationReward.x, reputationReward.y, EasingFunction.Linear(0, 1, impressiveness));
 
 			npc.GetComponentInChildren<SpriteRenderer>().flipX = true;
 			yield return AnimationManager.instance?.DoBunnyHop(npc.transform, npcEntrancePos.position);

@@ -4,7 +4,7 @@ namespace WizOsu.Patterns {
 	public class Singleton<T> : MonoBehaviour where T : MonoBehaviour {
 
 		public static bool verbose = false;
-		public static bool keepAlive = true;
+		public static bool keepAlive = false;
 
 		private static T _instance = null;
 		public static T instance {

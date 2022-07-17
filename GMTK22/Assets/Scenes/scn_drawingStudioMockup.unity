@@ -601,8 +601,9 @@ MonoBehaviour:
   npcEntrancePos: {fileID: 2065354278}
   npcDestinationPos: {fileID: 364829482}
   Reputation: 0
-  ReputationRequired: 7
+  ReputationRequired: 4
   colorChangeRange: {x: 2.8553429, y: 5.502679}
+  reputationReward: {x: 0.29404354, y: 1}
 --- !u!4 &229781357
 Transform:
   m_ObjectHideFlags: 0
@@ -10916,10 +10917,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b718a92e05d0b064b8ff7f8af6e7f6ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attachedGameObject: {fileID: 0}
+  attachedSpeaker: {fileID: 0}
   textObj: {fileID: 2065684206}
   padding: {x: 20.07, y: 12.61}
-  offset: {x: 0, y: 2}
 --- !u!114 &1341881442
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11036,6 +11036,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: NPC
+  offset: {x: 0, y: 2}
 --- !u!1 &1715523820
 GameObject:
   m_ObjectHideFlags: 3
@@ -11200,6 +11201,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Claris
+  offset: {x: 0, y: 1.3}
 --- !u!1 &1820899220 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4963951429026313071, guid: e31711c0e401f4bd4b05f104e1c0d991,

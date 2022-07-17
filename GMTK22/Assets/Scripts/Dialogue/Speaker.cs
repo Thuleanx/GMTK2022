@@ -4,6 +4,7 @@ using NaughtyAttributes;
 namespace WizOsu.Dialogue {
 	public class Speaker : MonoBehaviour {
 		public string Name;
+		public Vector2 offset;
 		bool init = false;
 
 		void Start() => TryInit();
