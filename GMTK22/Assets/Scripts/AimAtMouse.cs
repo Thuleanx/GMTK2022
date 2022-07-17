@@ -6,7 +6,7 @@ using Thuleanx.Utils;
 namespace WizOsu.Behaviour {
 	public class AimAtMouse : MonoBehaviour {
 		InputManager input => InputManager.instance;
-		Optional<Paintable> paintingCanvas;
+		[SerializeField] Optional<Paintable> paintingCanvas;
 
 		private void Update() {
 			Vector3 pos = input.MouseWorldPosition(paintingCanvas.Enabled ? paintingCanvas.Value.transform.position.z : 0);
