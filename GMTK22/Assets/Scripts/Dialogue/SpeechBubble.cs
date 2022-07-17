@@ -11,9 +11,11 @@ namespace WizOsu.UI {
 		[SerializeField] Vector2 padding;
 		[SerializeField] Vector2 offset;
 		RectTransform rectTransform;
+		Canvas canvas;
 
 		void Awake() {
 			rectTransform = GetComponent<RectTransform>();
+			canvas = GetComponentInParent<Canvas>();
 		}
 
 		public void Setup(GameObject speaker, string text) {
@@ -34,9 +36,13 @@ namespace WizOsu.UI {
 
 		public void Reposition() {
 			if (attachedGameObject) {
-				// Vector3 posWithCorrectZ = attachedGameObject.transform.position;
-				// Vector2 pos = (Vector2) Camera.main.WorldToScreenPoint(posWithCorrectZ) + offset;
-				transform.position = attachedGameObject.transform.position + (Vector3) offset;
+				Plane plane = new Plane(Vector3.forward, canvas.transform.position);
+				Vector3 screenPoint = Camera.main.WorldToScreenPoint(attachedGameObject.transform.position);
+				Ray ray = Camera.main.ScreenPointToRay(screenPoint);
+				float dist = 0;
+				plane.Raycast(ray, out dist);
+				Vector3 corPos = ray.GetPoint(dist);
+				transform.position = corPos + (Vector3) offset;
 			}
 		}
 

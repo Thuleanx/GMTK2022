@@ -12,7 +12,9 @@ namespace WizOsu.Animation {
 
 		public IEnumerator DoBunnyHop(Transform obj, Vector3 destination) {
 			Tween moveX = obj.DOMoveX(destination.x, hopAnimationDuration).SetEase(Ease.Linear);
+			Tween moveZ = obj.DOMoveZ(destination.z, hopAnimationDuration).SetEase(Ease.Linear);
 			moveX.Play();
+			moveZ.Play();
 			Sequence seq = DOTween.Sequence();
 			float curHeight = obj.position.y;
 			seq.Append(obj.DOMoveY(hopHeight + curHeight, hopDuration/2f).SetEase(Ease.OutCirc).From(curHeight));
