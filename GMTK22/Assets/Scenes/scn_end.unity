@@ -1478,6 +1478,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1699982254}
   - component: {fileID: 1699982255}
+  - component: {fileID: 1699982256}
   m_Layer: 0
   m_Name: Audio
   m_TagString: Untagged
@@ -1523,6 +1524,36 @@ MonoBehaviour:
   Event: 
   PlayEvent: 1
   StopEvent: 2
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+--- !u!114 &1699982256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1699982253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 1415307051
+      Data2: 1328730866
+      Data3: 827986851
+      Data4: 1618738649
+    Path: event:/SFX/Win
+  Event: 
+  PlayEvent: 1
+  StopEvent: 0
   AllowFadeout: 1
   TriggerOnce: 0
   Preload: 0
