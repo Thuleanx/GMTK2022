@@ -12,7 +12,7 @@ namespace WizOsu.Painting {
 		[SerializeField, MinMaxSlider(0, 1f)] Vector2 particleHitRadiusRange;
 		[SerializeField, Range(0, 1f)] float strength;
 		[SerializeField, Range(0, 1f)] float hardness;
-		[SerializeField] Color paintColor;
+		public Color paintColor;
 
 		void Awake() {
 			ParticleSystem = GetComponent<ParticleSystem>();

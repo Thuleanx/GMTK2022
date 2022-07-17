@@ -19,6 +19,7 @@ namespace WizOsu {
 		[SerializeField, Required] Renderer referenceCanvas;
 		[SerializeField, Required] DialogueRunner dialogueRunner;
 		[SerializeField, Required] InMemoryVariableStorage storage;
+		[SerializeField, Required] ParticlePaintOnHit brush;
 		[SerializeField] ParticleCombo wandParticles;
 		[SerializeField] string paintinOrderSource = "/Paintings/";
 
@@ -37,6 +38,8 @@ namespace WizOsu {
 		public float Reputation = 0;
 		[Range(0, 7f)]
 		public float ReputationRequired = 7f;
+		[MinMaxSlider(0, 20f)]
+		public Vector2 colorChangeRange = Vector2.one;
 
 		bool dialogueCompleted;
 
@@ -74,8 +77,19 @@ namespace WizOsu {
 
 			wandParticles?.Activate();
 
+			Color[] paletteColors = order.palette.GetPixels();
+
 			Timer workingOnOrder = order.durationSeconds;
-			while (workingOnOrder) yield return null;
+			Timer colorChangeCD = 0;
+			while (workingOnOrder) {
+				if (!colorChangeCD) {
+					Color nxtCol = paletteColors[Mathx.RandomRange(0, paletteColors.Length)];
+					brush.paintColor = nxtCol;
+					brush.GetComponent<ParticleSystemRenderer>().material.SetColor("_EmissionColor", nxtCol);
+					colorChangeCD = Mathx.RandomRange(colorChangeRange);
+				}
+				yield return null;
+			}
 
 			wandParticles?.StopProducing();
 
