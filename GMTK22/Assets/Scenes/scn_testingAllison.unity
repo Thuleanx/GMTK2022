@@ -241,6 +241,18 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
+--- !u!136 &380072792 stripped
+CapsuleCollider:
+  m_CorrespondingSourceObject: {fileID: 5197741485327573685, guid: e31711c0e401f4bd4b05f104e1c0d991,
+    type: 3}
+  m_PrefabInstance: {fileID: 5197741485649911788}
+  m_PrefabAsset: {fileID: 0}
+--- !u!136 &407300361 stripped
+CapsuleCollider:
+  m_CorrespondingSourceObject: {fileID: 5197741485043452373, guid: e31711c0e401f4bd4b05f104e1c0d991,
+    type: 3}
+  m_PrefabInstance: {fileID: 5197741485649911788}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &953917240
 GameObject:
   m_ObjectHideFlags: 0
@@ -351,6 +363,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: pf_Claris
       objectReference: {fileID: 0}
+    - target: {fileID: 5197741486707330018, guid: e31711c0e401f4bd4b05f104e1c0d991,
+        type: 3}
+      propertyPath: m_Height
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5197741486707330018, guid: e31711c0e401f4bd4b05f104e1c0d991,
+        type: 3}
+      propertyPath: m_Radius
+      value: 0.17
+      objectReference: {fileID: 0}
+    - target: {fileID: 5197741486707330018, guid: e31711c0e401f4bd4b05f104e1c0d991,
+        type: 3}
+      propertyPath: m_Center.x
+      value: 0.15
+      objectReference: {fileID: 0}
     - target: {fileID: 6364324372054479691, guid: e31711c0e401f4bd4b05f104e1c0d991,
         type: 3}
       propertyPath: m_RootOrder
@@ -406,5 +433,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6697795436448087589, guid: e31711c0e401f4bd4b05f104e1c0d991,
+        type: 3}
+      propertyPath: m_Damping
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6697795436448087589, guid: e31711c0e401f4bd4b05f104e1c0d991,
+        type: 3}
+      propertyPath: m_BendingStiffness
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6697795436448087589, guid: e31711c0e401f4bd4b05f104e1c0d991,
+        type: 3}
+      propertyPath: m_CapsuleColliders.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6697795436448087589, guid: e31711c0e401f4bd4b05f104e1c0d991,
+        type: 3}
+      propertyPath: m_CapsuleColliders.Array.data[0]
+      value: 
+      objectReference: {fileID: 380072792}
+    - target: {fileID: 6697795436448087589, guid: e31711c0e401f4bd4b05f104e1c0d991,
+        type: 3}
+      propertyPath: m_CapsuleColliders.Array.data[1]
+      value: 
+      objectReference: {fileID: 407300361}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e31711c0e401f4bd4b05f104e1c0d991, type: 3}
