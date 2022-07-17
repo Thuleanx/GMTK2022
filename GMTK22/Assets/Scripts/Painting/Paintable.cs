@@ -27,6 +27,15 @@ namespace TNTC.Painting {
 		}
 
 		void OnEnable() {
+			ResetTextures();
+		}
+
+		public void ResetTextures() {
+			maskRenderTexture?.Release();
+			uvIslandsRenderTexture?.Release();
+			extendIslandsRenderTexture?.Release();
+			supportTexture?.Release();
+			
 			maskRenderTexture = new RenderTexture(TEXTURE_SIZE, TEXTURE_SIZE, 0);
 			maskRenderTexture.filterMode = FilterMode.Bilinear;
 

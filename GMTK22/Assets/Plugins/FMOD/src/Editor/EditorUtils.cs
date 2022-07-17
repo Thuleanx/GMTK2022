@@ -485,7 +485,6 @@ namespace FMODUnity
 
             BuildStatusWatcher.Startup();
             BankRefresher.Startup();
-            BoltIntegration.Startup();
             EventManager.Startup();
             SetupWizardWindow.Startup();
         }

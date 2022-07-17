@@ -4,13 +4,13 @@ using NaughtyAttributes;
 namespace WizOsu {
 	[CreateAssetMenu(fileName = "PaintingOrder", menuName = "GMTK22/PaintingOrder", order = 0)]
 	public class PaintingOrder : ScriptableObject {
-		[SerializeField, Required] Texture2D palette;
-		[SerializeField, Required] Texture2D referenceImage;
-		[SerializeField, Required] Texture2D lineart;
-		[SerializeField] string requestNode;
-		[SerializeField] string successNode;
-		[SerializeField] string failNode;
-		[SerializeField, Range(0f, 1f)] float successThreshold = .3f;
-		[SerializeField, Range(0, 300f)] float durationSeconds;
+		[Required] public Texture2D palette;
+		[Required] public Texture2D referenceImage;
+		[Required] public Texture2D lineart;
+		[Required] public Sprite npcSprite;
+		public string requestNode;
+		public string evalNode;
+		[Range(0, 1f)] public float successThreshold = .3f;
+		[Range(0, 300f)] public float durationSeconds = 60f;
 	}
 }

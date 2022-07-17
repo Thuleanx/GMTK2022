@@ -1,6 +1,36 @@
 ﻿title: Start
 tags:
+position: 47,-133
 ---
-Character: Hello what do you want from me
-Customer: Gimme everything you have
+Claris: Hello what do you want from me
+NPC: Gimme everything you have
+===
+title: MillysPainting
+position: -156,77
+---
+Claris: How can I help you?
+NPC: Please color this in for me. 
+NPC: I appreciate it.
+===
+title: MillyEvaluate
+position: -156,170
+---
+<<if $score < $threshold>>
+	<<jump MillyApproved>>
+<<else>>
+	<<jump MillyDisapproved>>
+<<endif>>
+===
+title: MillyApproved
+position: 83,261
+---
+NPC: Yo good job dude
+NPC: Nisuh Nisuh
+===
+title: MillyDisapproved
+position: 91,116
+---
+NPC: Bro that kinda sucks
+Claris: I tried my best
+NPC: Welp your best isn't good enough
 ===

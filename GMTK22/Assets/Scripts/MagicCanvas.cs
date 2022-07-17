@@ -19,6 +19,7 @@ namespace WizOsu.Painting {
 
 		void Awake() {
 			Renderer = GetComponent<Renderer>();
+			Paintable = GetComponent<Paintable>();
 			command = new CommandBuffer();
 		}
 
