@@ -9,7 +9,7 @@ NPC: I appreciate it.
 title: MillyEvaluate
 position: -156,170
 ---
-<<if $score < $threshold>>
+<<if $score < $threshold1>>
 	<<jump MillyApproved>>
 <<else>>
 	<<jump MillyDisapproved>>
@@ -19,14 +19,14 @@ title: MillyApproved
 position: 83,261
 ---
 NPC: Yo good job dude
-NPC: Nisuh Nisuh
+NPC: Now I can show this to all my friends
 ===
 title: MillyDisapproved
 position: 91,116
 ---
 NPC: Bro that kinda sucks
 Claris: I tried my best
-NPC: Welp your best isn't good enough
+NPC: Your best isn't good enough
 ===
 title: AlfredInvite
 position: -239,-289
@@ -48,4 +48,50 @@ NPC: Amazing. I’m speechless.
 NPC: The bold strokes speak of so much unrestrained personality
 NPC: I hereby declare Claris the Wizard to be Claris the Royal Muralist Wizard
 Claris: Wow.. I actually became a Royal Muralist!! 
+===
+title: BrandonRequest
+position: -447,50
+---
+Claris: How can I help you?
+NPC: Can you paint me this island photo?
+===
+title: StandardResults
+position: -616,287
+---
+<<if $score < $threshold0>>
+	<<jump StandardImpressed>>
+<<elseif $score < $threshold1>>
+	<<jump SlightlyImpressed>>
+<<else>>
+	<<jump Disappointed>>
+<<endif>>
+===
+title: StandardImpressed
+position: -355,269
+---
+NPC: This is more beautiful than anything I've ever seen. Thank you
+===
+title: SlightlyImpressed
+position: -404,188
+---
+NPC: This is great! I'll go hang this up somewhere
+===
+title: Disappointed
+position: -469,416
+---
+NPC: This sucks!
+Claris: But I really tried my best
+===
+title: FrancisRequest
+position: -427,-68
+---
+Claris: Hello there. Can I help you
+NPC: umm.... can you paint me these two cats
+Claris: Of course
+===
+title: VaniaRequest
+position: -582,-168
+---
+Claris: What brings you in today
+NPC: I've got something for you to work on
 ===

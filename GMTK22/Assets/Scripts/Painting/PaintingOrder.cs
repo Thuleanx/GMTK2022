@@ -6,6 +6,7 @@ namespace WizOsu {
 	public class PaintingOrder : ScriptableObject {
 		[Required] public Texture2D palette;
 		[Required] public Texture2D referenceImage;
+		[Required] public Texture2D displayImage;
 		[Required] public Texture2D lineart;
 		[Required] public Sprite npcSprite;
 		public string requestNode;

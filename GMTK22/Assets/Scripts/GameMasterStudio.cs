@@ -137,7 +137,7 @@ namespace WizOsu {
 			drawingCanvas.Paintable.getRenderer().material.SetTexture("_MainTex", order.lineart);
 			AudioManager.Instance?.PlayOneShot(SFX_EraseDrawingCanvas);
 			yield return new WaitForSeconds(0.5f);
-			referenceCanvas.material.SetTexture("_MainTex", order.referenceImage);
+			referenceCanvas.material.SetTexture("_MainTex", order.displayImage);
 			AudioManager.Instance?.PlayOneShot(SFX_PutUpReference);
 			yield return new WaitForSeconds(0.5f);
 
