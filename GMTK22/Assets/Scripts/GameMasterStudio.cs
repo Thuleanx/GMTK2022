@@ -9,6 +9,7 @@ using TNTC.Painting;
 using Thuleanx.FX.Particles;
 using Thuleanx.Utils;
 using Yarn.Unity;
+using Thuleanx;
 
 namespace WizOsu {
 	public class GameMasterStudio : Singleton<GameMasterStudio> {
@@ -43,6 +44,11 @@ namespace WizOsu {
 		[MinMaxSlider(0, 20f)] public Vector2 colorChangeRange = Vector2.one;
 		[MinMaxSlider(0, 1f)] public Vector2 reputationReward = Vector2.one;
 
+		[Header("Intro")]
+		[HorizontalLine(color: EColor.Green)]
+		public bool PlayIntro = false;
+		[SerializeField] string introNode;
+
 		[Header("Squire")]
 		[HorizontalLine(color: EColor.Green)]
 		[SerializeField] string squireNode;
@@ -62,18 +68,22 @@ namespace WizOsu {
 		}
 
 		public IEnumerator IntroSequence() {
-			npc.transform.position = npcEntrancePos.position;
-			yield return AnimationManager.instance?.DoBunnyHop(npc.transform, npcDestinationPos.position);
+			yield return WaitForDialogue(introNode);
 		}
 
 		public IEnumerator Sequence_MainGameLoop() {
+			bool waiting = true;
+			TransitionManager.instance.FadeIn(() => waiting = false);
+			while (waiting) yield return null;
+			if (PlayIntro) yield return IntroSequence();
 			while (Reputation < ReputationRequired)
 				yield return Sequence_PaintingOrder(PossibleOrders[Mathx.RandomRange(0, PossibleOrders.Count)]);
 			yield return Sequence_Squire();
-			bool waiting = true;
+			waiting = true;
 			TransitionManager.instance.Fadeout(() => waiting = false);
 			while (waiting) yield return null;
 			storage.SetValue("$satCustomerCnt", satisfiedCustomersCnt);
+			App.Instance.RequestLoad(nextScene.SceneName);
 		}
 
 		public IEnumerator Sequence_PaintingOrder(PaintingOrder order) {

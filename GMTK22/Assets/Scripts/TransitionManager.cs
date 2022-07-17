@@ -15,13 +15,6 @@ namespace WizOsu {
 		[SerializeField] Ease fadeInEase = Ease.InCirc;
 		[SerializeField] Ease fadeOutEase = Ease.InCirc;
 
-		void Start() {
-			FadeIn();
-			App.AfterSceneLoad.AddListener(AfterSceneLoad);
-		}
-
-		void AfterSceneLoad(Scene scene, LoadSceneMode mode) => FadeIn();
-
 
 		public void FadeIn(Action onComplete = null) {
 			Color colS = fader.color; colS.a = 1f;

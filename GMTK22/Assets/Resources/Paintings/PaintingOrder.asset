@@ -19,4 +19,4 @@ MonoBehaviour:
   requestNode: MillysPainting
   evalNode: MillyEvaluate
   thresholds: {x: 0.15502681, y: 0.18654272}
-  durationSeconds: 60
+  durationSeconds: 5

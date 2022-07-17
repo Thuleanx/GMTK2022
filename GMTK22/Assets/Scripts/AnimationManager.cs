@@ -24,6 +24,7 @@ namespace WizOsu.Animation {
 			yield return new WaitForSeconds(hopAnimationDuration);
 			yield return seq.WaitForElapsedLoops(seq.CompletedLoops() + hopsAfterDestination);
 			seq.Kill();
+			obj.transform.position = destination;
 		}
 
 		// public IEnumerator DoWiggleMove(Transform obj, Vector3 destination, float duration) {
