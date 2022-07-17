@@ -169,6 +169,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hopHeight: 0.553
   hopDuration: 0.5
+  hopAnimationDuration: 1.5
   hopsAfterDestination: 3
 --- !u!1 &76269891
 GameObject:
@@ -6824,6 +6825,11 @@ PrefabInstance:
       propertyPath: referenceCanvas
       value: 
       objectReference: {fileID: 1568974861}
+    - target: {fileID: 8723685230414578407, guid: 731acae3e0b8f1c48a0b796514323ae8,
+        type: 3}
+      propertyPath: paintinOrderSource
+      value: Paintings/
+      objectReference: {fileID: 0}
     - target: {fileID: 8723685230414578409, guid: 731acae3e0b8f1c48a0b796514323ae8,
         type: 3}
       propertyPath: m_Name

@@ -82,11 +82,12 @@ MonoBehaviour:
   drawingCanvas: {fileID: 0}
   referenceCanvas: {fileID: 0}
   dialogueRunner: {fileID: 0}
+  storage: {fileID: 0}
   wandParticles: {fileID: 0}
-  PossibleOrders:
-  - {fileID: 11400000, guid: 2b0b8becf6926374c826bc9cc9461d98, type: 2}
   npcEntrancePos: {fileID: 8723685231438809504}
   npcDestinationPos: {fileID: 8723685229510468532}
+  Reputation: 0
+  ReputationRequired: 7
 --- !u!1 &8723685231438809507
 GameObject:
   m_ObjectHideFlags: 0

@@ -20,8 +20,9 @@ namespace WizOsu {
 		[SerializeField, Required] DialogueRunner dialogueRunner;
 		[SerializeField, Required] InMemoryVariableStorage storage;
 		[SerializeField] ParticleCombo wandParticles;
+		[SerializeField] string paintinOrderSource = "/Paintings/";
 
-		[SerializeField] List<PaintingOrder> PossibleOrders;
+		[SerializeField, ReadOnly] List<PaintingOrder> PossibleOrders;
 
 		#region Positional Anchors
 		[Header("Anchor Positions")]
@@ -30,17 +31,22 @@ namespace WizOsu {
 		[SerializeField] Transform npcDestinationPos;
 		#endregion
 
-		public float Reputation;
+
+		[Header("Game Vars")]
+		[ProgressBar("Reputation", 7f)]
+		public float Reputation = 0;
+		[Range(0, 7f)]
+		public float ReputationRequired = 7f;
 
 		bool dialogueCompleted;
 
 		public override void Awake() {
 			base.Awake();
-			// PossibleOrders = new List<PaintingOrder>();
+			PossibleOrders = new List<PaintingOrder>(Resources.LoadAll<PaintingOrder>(paintinOrderSource));
 		}
 
 		void Start() {
-			StartCoroutine(Sequence_PaintingOrder(PossibleOrders[0]));
+			StartCoroutine(Sequence_MainGameLoop());
 		}
 
 		public IEnumerator IntroSequence() {
@@ -49,7 +55,8 @@ namespace WizOsu {
 		}
 
 		public IEnumerator Sequence_MainGameLoop() {
-
+			while (Reputation < ReputationRequired)
+				yield return Sequence_PaintingOrder(PossibleOrders[Mathx.RandomRange(0, PossibleOrders.Count)]);
 		}
 
 		public IEnumerator Sequence_PaintingOrder(PaintingOrder order) {
