@@ -1,5 +1,7 @@
 using UnityEngine;
 using NaughtyAttributes;
+using UnityEngine.Animations;
+using UnityEngine.Animations.Rigging;
 using System.Collections.Generic;
 using System.Collections;
 using WizOsu.Animation;
@@ -45,7 +47,7 @@ namespace WizOsu {
 		}
 
 		public IEnumerator Sequence_MainGameLoop() {
-			wizard.GetComponentInChildren<Animator>().SetInteger("State", 0);
+			DisableAiming(wizard.gameObject);
 			bool waiting = true;
 			TransitionManager.instance.FadeIn(() => waiting = false);
 			while (waiting) yield return null;
@@ -63,19 +65,37 @@ namespace WizOsu {
 
 
 		public static void EnableAniming(GameObject jobj) {
-			jobj.GetComponentInChildren<Animator>().SetInteger("State", 1);
+			foreach (var animator in jobj.GetComponentsInChildren<Animator>())
+				animator.SetInteger("State", 1);
 			foreach (var obj in jobj.GetComponentsInChildren<AimAtMouse>())
 				obj.enabled = true;
+			foreach (var constraint in jobj.GetComponentsInChildren<MultiAimConstraint>()) {
+				if (constraint.gameObject.name.Contains("Arm")) {
+					var sources = constraint.data.sourceObjects;
+					sources.SetWeight(0, 1);
+					constraint.data.sourceObjects = sources;
+				} else {
+					var sources = constraint.data.sourceObjects;
+					sources.SetWeight(0, .5f);
+					constraint.data.sourceObjects = sources;
+				}
+			}
 		}
 
 		public static void DisableAiming(GameObject gobj) {
-			gobj.GetComponentInChildren<Animator>().SetInteger("State", 0);
+			foreach (var animator in gobj.GetComponentsInChildren<Animator>())
+				animator.SetInteger("State", 0);
 			foreach (var obj in gobj.GetComponentsInChildren<AimAtMouse>())
-				obj.enabled = false;
+				obj.enabled =false;
+			foreach (var constraint in gobj.GetComponentsInChildren<MultiAimConstraint>()) {
+				var sources = constraint.data.sourceObjects;
+				sources.SetWeight(0, 0);
+				constraint.data.sourceObjects = sources;
+			}
 		}
 
 		public IEnumerator Sequence_Freedraw() {
-			wizard.GetComponentInChildren<Animator>().SetInteger("State", 1);
+			EnableAniming(wizard.gameObject);
 			wandParticles?.Activate();
 
 			Color[] paletteColors = palette.GetPixels();
@@ -92,7 +112,7 @@ namespace WizOsu {
 				yield return null;
 			}
 
-			wizard.GetComponentInChildren<Animator>().SetInteger("State", 0);
+			DisableAiming(wizard.gameObject);
 			wandParticles?.StopProducing();
 		}
 
