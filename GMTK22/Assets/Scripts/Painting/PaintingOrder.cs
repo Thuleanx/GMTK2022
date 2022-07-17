@@ -10,7 +10,7 @@ namespace WizOsu {
 		[Required] public Sprite npcSprite;
 		public string requestNode;
 		public string evalNode;
-		[Range(0, 1f)] public float successThreshold = .3f;
+		[MinMaxSlider(0, 1f)] public Vector2 thresholds = Vector2.one * .3f;
 		[Range(0, 300f)] public float durationSeconds = 60f;
 	}
 }

@@ -22,6 +22,7 @@ namespace WizOsu {
 		[SerializeField, Required] ParticlePaintOnHit brush;
 		[SerializeField] ParticleCombo wandParticles;
 		[SerializeField] string paintinOrderSource = "/Paintings/";
+		[SerializeField] SceneReference nextScene;
 
 		[SerializeField, ReadOnly] List<PaintingOrder> PossibleOrders;
 
@@ -34,6 +35,7 @@ namespace WizOsu {
 
 
 		[Header("Game Vars")]
+		[HorizontalLine(color: EColor.Blue)]
 		[ProgressBar("Reputation", 4f)]
 		public float Reputation = 0;
 		[Range(0, 7f)]
@@ -41,7 +43,14 @@ namespace WizOsu {
 		[MinMaxSlider(0, 20f)] public Vector2 colorChangeRange = Vector2.one;
 		[MinMaxSlider(0, 1f)] public Vector2 reputationReward = Vector2.one;
 
+		[Header("Squire")]
+		[HorizontalLine(color: EColor.Green)]
+		[SerializeField] string squireNode;
+		[SerializeField] Sprite squireSprite;
+		[SerializeField] string clarisNode;
+
 		bool dialogueCompleted;
+		int satisfiedCustomersCnt = 0;
 
 		public override void Awake() {
 			base.Awake();
@@ -60,6 +69,11 @@ namespace WizOsu {
 		public IEnumerator Sequence_MainGameLoop() {
 			while (Reputation < ReputationRequired)
 				yield return Sequence_PaintingOrder(PossibleOrders[Mathx.RandomRange(0, PossibleOrders.Count)]);
+			yield return Sequence_Squire();
+			bool waiting = true;
+			TransitionManager.instance.Fadeout(() => waiting = false);
+			while (waiting) yield return null;
+			storage.SetValue("$satCustomerCnt", satisfiedCustomersCnt);
 		}
 
 		public IEnumerator Sequence_PaintingOrder(PaintingOrder order) {
@@ -96,7 +110,8 @@ namespace WizOsu {
 			float score = TextureDiffUtils.SumSquareDifference(drawingCanvas.GetTexture(), 
 				order.referenceImage);
 
-			storage.SetValue("$threshold", order.successThreshold);
+			storage.SetValue("$threshold0", order.thresholds.x);
+			storage.SetValue("$threshold1", order.thresholds.y);
 			storage.SetValue("$score", score);
 
 			npc.GetComponentInChildren<SpriteRenderer>().flipX = false;
@@ -104,13 +119,28 @@ namespace WizOsu {
 
 			yield return WaitForDialogue(order.evalNode);
 
-			float impressiveness = Mathf.InverseLerp(1 - order.successThreshold, 1, 
-				Mathf.Max(1 - score, 1 - order.successThreshold));
+			float impressiveness = Mathf.InverseLerp(1 - order.thresholds.y, 1, 
+				Mathf.Max(1 - score, 1 - order.thresholds.y));
 
 			Reputation += Mathf.Lerp(reputationReward.x, reputationReward.y, EasingFunction.Linear(0, 1, impressiveness));
 
+			satisfiedCustomersCnt += score < order.thresholds.y ? 1 : 0;
+
 			npc.GetComponentInChildren<SpriteRenderer>().flipX = true;
 			yield return AnimationManager.instance?.DoBunnyHop(npc.transform, npcEntrancePos.position);
+		}
+
+		public IEnumerator Sequence_Squire() {
+			npc.GetComponentInChildren<SpriteRenderer>().flipX = false;
+			npc.GetComponentInChildren<SpriteRenderer>().sprite = squireSprite;
+			yield return AnimationManager.instance?.DoBunnyHop(npc.transform, npcDestinationPos.position);
+
+			yield return WaitForDialogue(squireNode);
+
+			npc.GetComponentInChildren<SpriteRenderer>().flipX = true;
+			yield return AnimationManager.instance?.DoBunnyHop(npc.transform, npcEntrancePos.position);
+
+			yield return WaitForDialogue(clarisNode);
 		}
 
 		public IEnumerator WaitForDialogue(string node) {

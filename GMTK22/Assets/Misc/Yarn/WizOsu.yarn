@@ -34,3 +34,16 @@ NPC: Bro that kinda sucks
 Claris: I tried my best
 NPC: Welp your best isn't good enough
 ===
+title: AlfredInvite
+position: -239,-289
+---
+NPC: Ehem.
+NPC: Claris the Wizard, you have gained much fame with your expressive and passionate paintings, and have thus captured the attention of THE ROYAL KING.
+NPC: THE ROYAL KING would hereby like to commission a grand mural to grace one of the many great halls of our castle.
+NPC: We will await your arrival at the gate
+===
+title: ClarisReflect
+position: -241,-231
+---
+Claris: Wao that's my dream come true
+===
