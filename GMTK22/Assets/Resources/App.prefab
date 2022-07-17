@@ -46,6 +46,50 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   texturePaint: {fileID: 4800000, guid: 63cc08e0d7b74b242ab626b6b35d929b, type: 3}
   extendIslands: {fileID: 4800000, guid: 4a9f1572843cd4744a282f3fe8849456, type: 3}
+--- !u!1 &3088035741702102977
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 561761895680831577}
+  - component: {fileID: 1094701820647879267}
+  m_Layer: 0
+  m_Name: man_SpeakerManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &561761895680831577
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3088035741702102977}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7443829172784896798}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1094701820647879267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3088035741702102977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eafc1decfb1331146815b165067dd2df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4605645729059576387
 GameObject:
   m_ObjectHideFlags: 0
@@ -202,6 +246,7 @@ Transform:
   m_Children:
   - {fileID: 740789567141526218}
   - {fileID: 9143586152210256042}
+  - {fileID: 561761895680831577}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
