@@ -15,10 +15,12 @@ namespace WizOsu {
 		[SerializeField] Ease fadeInEase = Ease.InCirc;
 		[SerializeField] Ease fadeOutEase = Ease.InCirc;
 
-
 		public void FadeIn(Action onComplete = null) {
-			Color colS = fader.color; colS.a = 1f;
-			Color colT = fader.color; colT.a = 0f;
+			FadeIn(fader.color, onComplete);
+		}
+		public void FadeIn(Color col, Action onComplete = null) {
+			Color colS = col; colS.a = 1f;
+			Color colT = col; colT.a = 0f;
 			fader.raycastTarget = true;
 			fader.DOColor(colT, fadeInDuration).From(colS).SetEase(fadeInEase).OnComplete(
 				() => { fader.raycastTarget = false; onComplete?.Invoke(); }
@@ -37,9 +39,10 @@ namespace WizOsu {
 			fader.raycastTarget = true;
 		}
 
-		public void FadeOut(Action onComplete = null) {
-			Color colS = fader.color; colS.a = 1f;
-			Color colT = fader.color; colT.a = 0f;
+		public void FadeOut(Action onComplete = null) => FadeOut(fader.color, onComplete);
+		public void FadeOut(Color col, Action onComplete = null) {
+			Color colS = col; colS.a = 1f;
+			Color colT = col; colT.a = 0f;
 			fader.raycastTarget = true;
 			fader.DOColor(colS, fadeOutDuration).From(colT).SetEase(fadeOutEase).Play().OnComplete(
 				()=>onComplete?.Invoke()

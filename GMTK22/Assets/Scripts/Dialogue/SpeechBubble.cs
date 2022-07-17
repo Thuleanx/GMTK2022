@@ -10,6 +10,7 @@ namespace WizOsu.UI {
 		[SerializeField, ReadOnly] Speaker attachedSpeaker = null;
 		[SerializeField, Required] public TextMeshProUGUI textObj;
 		[SerializeField] Vector2 padding;
+		[SerializeField] Vector2 screenPadding = Vector2.one * .15f;
 		RectTransform rectTransform;
 		Canvas canvas;
 
@@ -43,7 +44,30 @@ namespace WizOsu.UI {
 				plane.Raycast(ray, out dist);
 				Vector3 corPos = ray.GetPoint(dist);
 				transform.position = corPos;
+				BoundToScreen();
 			}
+		}
+
+		public void BoundToScreen() {
+			Plane plane = new Plane(Vector3.forward, canvas.transform.position);
+			Ray ray = Camera.main.ViewportPointToRay(Vector3.zero);
+			Ray ray2 = Camera.main.ViewportPointToRay(Vector3.one);
+			float dist = 0, dist2;
+			plane.Raycast(ray, out dist);
+			plane.Raycast(ray2, out dist2);
+			Vector3 botLeft = ray.GetPoint(dist);
+			Vector3 topRight = ray2.GetPoint(dist2);
+
+			Vector3 dim = transform.lossyScale * rectTransform.sizeDelta;
+
+			botLeft += (dim + (Vector3) screenPadding) / 2;
+			topRight -= (dim + (Vector3) screenPadding) / 2;
+
+			transform.position = new Vector3(
+				Mathf.Clamp(transform.position.x, botLeft.x, topRight.x),
+				Mathf.Clamp(transform.position.y, botLeft.y, topRight.y),
+				transform.position.z
+			);
 		}
 
 		private void OnDisable() => attachedSpeaker = null;
