@@ -3,7 +3,17 @@ guid: 268a398ce5cb84c23800af193bfa466d
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert1
+    second: {fileID: 2100000, guid: 68d1f048623a04a8ab284537d43493f4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: wizard_M
+    second: {fileID: 2100000, guid: 68d1f048623a04a8ab284537d43493f4, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -16,7 +26,8 @@ ModelImporter:
     optimizeGameObjects: 0
     removeConstantScaleCurves: 1
     motionNodeName: 
-    rigImportErrors: 
+    rigImportErrors: "Invalid Avatar Rig Configuration. Missing or invalid transform:\n\tRequired
+      human bone 'LeftFoot' not found\n"
     rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
@@ -24,7 +35,7 @@ ModelImporter:
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
     importConstraints: 0
-    animationCompression: 1
+    animationCompression: 3
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -80,7 +91,172 @@ ModelImporter:
   humanDescription:
     serializedVersion: 3
     human: []
-    skeleton: []
+    skeleton:
+    - name: wizard_rig(Clone)
+      parentName: 
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: wizard_geo
+      parentName: wizard_rig(Clone)
+      position: {x: -0, y: 0.011012816, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: hair_hat
+      parentName: wizard_geo
+      position: {x: -0, y: -0.011012816, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: head
+      parentName: wizard_geo
+      position: {x: -0, y: -0.011012816, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: body
+      parentName: wizard_geo
+      position: {x: -0, y: -0.011012816, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: arm_R
+      parentName: wizard_geo
+      position: {x: -0, y: -0.011012816, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: arm_L
+      parentName: wizard_geo
+      position: {x: -0, y: -0.011012816, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: leg_R
+      parentName: wizard_geo
+      position: {x: -0, y: -0.011012816, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: leg_L
+      parentName: wizard_geo
+      position: {x: -0, y: -0.011012816, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: cloak_inner
+      parentName: wizard_geo
+      position: {x: -0, y: 0.37841395, z: -0.016097223}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: cloak_outer
+      parentName: wizard_geo
+      position: {x: -0, y: 0.5262348, z: -0.042970542}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: wizard_skeleton
+      parentName: wizard_rig(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: jt_root
+      parentName: wizard_skeleton
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
+      scale: {x: 1.0000017, y: 1.0000017, z: 1}
+    - name: jt_pelvis
+      parentName: jt_root
+      position: {x: -0.34787396, y: 7.4792996e-17, z: 0}
+      rotation: {x: -0, y: -0, z: -0, w: 1}
+      scale: {x: 1.0000017, y: 1.0000017, z: 1}
+    - name: jt_chest
+      parentName: jt_pelvis
+      position: {x: -0.12934749, y: 3.117145e-17, z: 0}
+      rotation: {x: -0, y: -0, z: -0, w: 1}
+      scale: {x: 1.0000017, y: 1.0000017, z: 1}
+    - name: jt_neck
+      parentName: jt_chest
+      position: {x: -0.1526491, y: 3.389491e-17, z: 0}
+      rotation: {x: -0, y: -0, z: -0, w: 1}
+      scale: {x: 1.0000017, y: 1.0000017, z: 1}
+    - name: jt_head_top
+      parentName: jt_neck
+      position: {x: -0.27726308, y: 6.156477e-17, z: 0}
+      rotation: {x: -0.19751656, y: -0.19751656, z: 0.67896044, w: 0.67896044}
+      scale: {x: 0.99999994, y: 1.0000002, z: 1.0000005}
+    - name: jt_hat
+      parentName: jt_head_top
+      position: {x: 1.8203772e-18, y: 0.11503653, z: -2.5979218e-16}
+      rotation: {x: -0, y: -0, z: -0.0000000037252899, w: 1}
+      scale: {x: 1, y: 1.0000001, z: 1.0000002}
+    - name: jt_hat_end
+      parentName: jt_hat
+      position: {x: -1.8203772e-18, y: 0.20538822, z: 2.2912228e-16}
+      rotation: {x: -0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1.0000002, z: 0.99999994}
+    - name: jt_hair
+      parentName: jt_head_top
+      position: {x: 0.14557965, y: -0.15168762, z: 0.101069905}
+      rotation: {x: 0.19751656, y: -0.19751656, z: 0.67896044, w: 0.67896044}
+      scale: {x: 0.99999183, y: 1.000003, z: 1.0000116}
+    - name: jt_hair_end
+      parentName: jt_hair
+      position: {x: -0.16666666, y: -3.7007432e-17, z: 0}
+      rotation: {x: -0, y: -0, z: -0.70710677, w: 0.70710677}
+      scale: {x: 1.0000002, y: 1.0000001, z: 1}
+    - name: jt_clavicle_R
+      parentName: jt_chest
+      position: {x: -0.08545954, y: 0.0492278, z: 0.0153866}
+      rotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+    - name: jt_arm_R
+      parentName: jt_clavicle_R
+      position: {x: 0.0816942, y: 0, z: 0}
+      rotation: {x: -0.000000027765203, y: -0.000000016610063, z: 0.61418, w: 0.789166}
+      scale: {x: 1.0000007, y: 1.0000007, z: 1}
+    - name: jt_hand_R
+      parentName: jt_arm_R
+      position: {x: 0.058647607, y: -0.29658213, z: 0}
+      rotation: {x: -0, y: -0, z: -0.000000029802315, w: 1}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1}
+    - name: jt_clavicle_L
+      parentName: jt_chest
+      position: {x: -0.08545974, y: -0.04922777, z: 0.015386566}
+      rotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+    - name: jt_arm_L
+      parentName: jt_clavicle_L
+      position: {x: -0.08169462, y: 0, z: 0}
+      rotation: {x: 0.000000010908428, y: -0.000000030459955, z: 0.026435336, w: 0.9996506}
+      scale: {x: 1.0000007, y: 1.0000007, z: 1}
+    - name: jt_hand_L
+      parentName: jt_arm_L
+      position: {x: -0.3023249, y: 0, z: -4.440892e-18}
+      rotation: {x: -0, y: -0, z: -0.000000029802315, w: 1}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1}
+    - name: jt_leg_R
+      parentName: jt_pelvis
+      position: {x: 0.029651968, y: 0.073588, z: 0}
+      rotation: {x: -0, y: -0, z: 1, w: 0}
+      scale: {x: 1.0000017, y: 1.0000017, z: 1}
+    - name: jt_foot_R
+      parentName: jt_leg_R
+      position: {x: -0.247807, y: -1.0658141e-16, z: -3.98084e-17}
+      rotation: {x: 0.71695656, y: 0.0611075, z: -0.030227683, w: 0.6937762}
+      scale: {x: 1.0000026, y: 1.0000002, z: 1.0000024}
+    - name: jt_toe_R
+      parentName: jt_foot_R
+      position: {x: -0.13929978, y: 0.000000052808982, z: 8.881784e-18}
+      rotation: {x: -0, y: -0.70710677, z: 0.000000018626448, w: 0.7071068}
+      scale: {x: 1.0000001, y: 1, z: 1.0000001}
+    - name: jt_leg_L
+      parentName: jt_pelvis
+      position: {x: 0.029651841, y: -0.07358804, z: 0}
+      rotation: {x: -0, y: -0, z: 1, w: 0}
+      scale: {x: 1.0000017, y: 1.0000017, z: 1}
+    - name: jt_foot_L
+      parentName: jt_leg_L
+      position: {x: -0.24780707, y: -4.4408918e-17, z: -3.9808358e-17}
+      rotation: {x: 0.69377613, y: 0.030227948, z: -0.061107762, w: 0.7169566}
+      scale: {x: 1.0000026, y: 1.0000002, z: 1.0000024}
+    - name: jt_toe_L
+      parentName: jt_foot_L
+      position: {x: -0.13929959, y: 2.220446e-16, z: 4.4408918e-17}
+      rotation: {x: -0, y: -0.70710677, z: 0.000000018626448, w: 0.7071068}
+      scale: {x: 1.0000001, y: 1, z: 1.0000001}
     armTwist: 0.5
     foreArmTwist: 0.5
     upperLegTwist: 0.5
@@ -97,7 +273,7 @@ ModelImporter:
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
-  avatarSetup: 0
+  avatarSetup: 1
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
   remapMaterialsIfMaterialImportModeIsNone: 0
   additionalBone: 0
