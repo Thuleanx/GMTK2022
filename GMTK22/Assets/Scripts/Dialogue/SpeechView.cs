@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 using TMPro;
 using UnityEngine.UI;
 using Yarn.Unity;
@@ -16,6 +17,9 @@ namespace WizOsu.Dialogue {
 		[SerializeField, Range(0, 10f)] float holdTime = 1f;
 		[SerializeField, Range(0, 10f)] float fadeInTime = 1f;
 		[SerializeField, Range(0, 10f)] float fadeOutTime = 1f;
+		[SerializeField, Range(.01f, 100f)] float lettersPerSecond;
+
+		[SerializeField] UnityEvent onCharTyped;
 
 		LocalizedLine currentLine = null;
 
@@ -36,8 +40,8 @@ namespace WizOsu.Dialogue {
         {
 			// disabling interaction temporarily while dismissing the line
 			// we don't want people to interrupt a dismissal
-			// var interactable = canvasGroup.interactable;
-			// canvasGroup.interactable = false;
+			var interactable = CanvasGroup.interactable;
+			CanvasGroup.interactable = false;
 
 			// if (useFadeEffect)
 			// {
@@ -48,8 +52,10 @@ namespace WizOsu.Dialogue {
 			CanvasGroup.DOFade(0f, fadeInTime).From(1).Play();
 			yield return new WaitForSeconds(fadeOutTime);
 
+			speechBubble.gameObject.SetActive(false);
 			CanvasGroup.alpha = 0;
 			CanvasGroup.blocksRaycasts = false;
+			CanvasGroup.interactable = interactable;
 			onDismissalComplete();
         }
 
@@ -68,11 +74,31 @@ namespace WizOsu.Dialogue {
         {
             IEnumerator PresentLine()
             {
+				GameObject attachedObj = null;
+				if (dialogueLine.CharacterName != null && dialogueLine.CharacterName.Length > 0) {
+					Speaker speaker = SpeakerManager.instance?.GetSpeaker(dialogueLine.CharacterName);
+					attachedObj = speaker.gameObject;
+				}
+
 				speechBubble.gameObject.SetActive(true);
-				speechBubble.Setup(null, dialogueLine.TextWithoutCharacterName.Text);
+				speechBubble.Setup(attachedObj, dialogueLine.TextWithoutCharacterName.Text);
+				speechBubble.textObj.maxVisibleCharacters = 0;
 
 				CanvasGroup.DOFade(1f, fadeInTime).From(0).Play();
 				yield return new WaitForSeconds(fadeInTime);
+
+
+				CanvasGroup.alpha = 1f;
+				CanvasGroup.interactable = true;
+				CanvasGroup.blocksRaycasts = true;
+
+				int charCnt = dialogueLine.TextWithoutCharacterName.Text.Length;
+
+				while (speechBubble.textObj.maxVisibleCharacters < charCnt) {
+					speechBubble.textObj.maxVisibleCharacters++;
+					onCharTyped?.Invoke();
+					yield return new WaitForSeconds(1f / lettersPerSecond);
+				}
 
 				speechBubble.textObj.maxVisibleCharacters = int.MaxValue;
 

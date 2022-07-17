@@ -9,6 +9,7 @@ namespace WizOsu.UI {
 		[SerializeField, ReadOnly] GameObject attachedGameObject = null;
 		[SerializeField, Required] public TextMeshProUGUI textObj;
 		[SerializeField] Vector2 padding;
+		[SerializeField] Vector2 offset;
 		RectTransform rectTransform;
 
 		void Awake() {
@@ -25,6 +26,18 @@ namespace WizOsu.UI {
 		public void ResizeToTextContent() {
 			Vector2 textSize = textObj.GetRenderedValues();
 			rectTransform.sizeDelta = textSize + padding * 2;
+		}
+
+		void LateUpdate() {
+			Reposition();
+		}
+
+		public void Reposition() {
+			if (attachedGameObject) {
+				// Vector3 posWithCorrectZ = attachedGameObject.transform.position;
+				// Vector2 pos = (Vector2) Camera.main.WorldToScreenPoint(posWithCorrectZ) + offset;
+				transform.position = attachedGameObject.transform.position + (Vector3) offset;
+			}
 		}
 
 		private void OnDisable() => attachedGameObject = null;
