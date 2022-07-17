@@ -55,6 +55,7 @@ namespace WizOsu {
 			waiting = true;
 			TransitionManager.instance.FadeOut(() => waiting = false);
 			while (waiting) yield return null;
+			MuralPainting.painting = drawingCanvas.GetTexture();
 			App.Instance.RequestLoad(nextScene.SceneName);
 		}
 
