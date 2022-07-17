@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="EncodableAsset" id="{83ba2368-c3d5-4ebc-a442-fd580713e6b8}">
+		<property name="assetPath">
+			<value>Interface/Back_tones/style2/</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{35c3f92c-d274-4acc-bb47-d0aaed8b359c}</destination>
+		</relationship>
+	</object>
+</objects>

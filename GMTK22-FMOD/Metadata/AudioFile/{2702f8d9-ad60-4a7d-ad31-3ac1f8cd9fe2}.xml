@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{2702f8d9-ad60-4a7d-ad31-3ac1f8cd9fe2}">
+		<property name="assetPath">
+			<value>fanfare.ogg</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>12.00625850340136</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{35c3f92c-d274-4acc-bb47-d0aaed8b359c}</destination>
+		</relationship>
+	</object>
+</objects>

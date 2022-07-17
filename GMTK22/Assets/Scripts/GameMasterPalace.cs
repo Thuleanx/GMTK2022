@@ -10,6 +10,7 @@ using Thuleanx.FX.Particles;
 using Thuleanx.Utils;
 using Yarn.Unity;
 using Thuleanx;
+using WizOsu.Behaviour;
 
 namespace WizOsu {
 	public class GameMasterPalace : MonoBehaviour {
@@ -44,6 +45,7 @@ namespace WizOsu {
 		}
 
 		public IEnumerator Sequence_MainGameLoop() {
+			wizard.GetComponentInChildren<Animator>().SetInteger("State", 0);
 			bool waiting = true;
 			TransitionManager.instance.FadeIn(() => waiting = false);
 			while (waiting) yield return null;
@@ -59,7 +61,21 @@ namespace WizOsu {
 			App.Instance.RequestLoad(nextScene.SceneName);
 		}
 
+
+		public static void EnableAniming(GameObject jobj) {
+			jobj.GetComponentInChildren<Animator>().SetInteger("State", 1);
+			foreach (var obj in jobj.GetComponentsInChildren<AimAtMouse>())
+				obj.enabled = true;
+		}
+
+		public static void DisableAiming(GameObject gobj) {
+			gobj.GetComponentInChildren<Animator>().SetInteger("State", 0);
+			foreach (var obj in gobj.GetComponentsInChildren<AimAtMouse>())
+				obj.enabled = false;
+		}
+
 		public IEnumerator Sequence_Freedraw() {
+			wizard.GetComponentInChildren<Animator>().SetInteger("State", 1);
 			wandParticles?.Activate();
 
 			Color[] paletteColors = palette.GetPixels();
@@ -76,6 +92,7 @@ namespace WizOsu {
 				yield return null;
 			}
 
+			wizard.GetComponentInChildren<Animator>().SetInteger("State", 0);
 			wandParticles?.StopProducing();
 		}
 

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="EncodableAsset" id="{1be2dd5d-e2f3-44b2-af33-b8e9a9080197}">
+		<property name="assetPath">
+			<value>[kdd]DifferentSteps/</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{35c3f92c-d274-4acc-bb47-d0aaed8b359c}</destination>
+		</relationship>
+	</object>
+</objects>

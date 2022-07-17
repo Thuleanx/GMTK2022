@@ -18,5 +18,5 @@ MonoBehaviour:
   npcSprite: {fileID: 21300000, guid: 8bbb1a1311b7943d9b4a430d5018294a, type: 3}
   requestNode: MillysPainting
   evalNode: MillyEvaluate
-  thresholds: {x: 0.15502681, y: 0.18654272}
+  thresholds: {x: 0.6386951, y: 0.670211}
   durationSeconds: 5

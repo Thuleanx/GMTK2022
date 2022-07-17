@@ -74,6 +74,7 @@ namespace WizOsu.Dialogue {
         {
             IEnumerator PresentLine()
             {
+				GetComponentInChildren<FMODUnity.StudioEventEmitter>()?.Play();
 				Speaker attachedSpeaker = null;
 				if (dialogueLine.CharacterName != null && dialogueLine.CharacterName.Length > 0) 
 					attachedSpeaker = SpeakerManager.instance?.GetSpeaker(dialogueLine.CharacterName);

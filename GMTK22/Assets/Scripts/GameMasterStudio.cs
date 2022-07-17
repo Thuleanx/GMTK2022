@@ -5,14 +5,18 @@ using WizOsu.Animation;
 using WizOsu.Patterns;
 using WizOsu.Painting;
 using NaughtyAttributes;
+using WizOsu.Behaviour;
 using TNTC.Painting;
 using Thuleanx.FX.Particles;
 using Thuleanx.Utils;
 using Yarn.Unity;
 using Thuleanx;
+using Thuleanx.Audio;
 
 namespace WizOsu {
 	public class GameMasterStudio : Singleton<GameMasterStudio> {
+		public static int satisfiedCustomersCnt = 7;
+
 		[Header("References")]
 		[SerializeField, Required] GameObject wizard;
 		[SerializeField, Required] GameObject npc;
@@ -21,10 +25,13 @@ namespace WizOsu {
 		[SerializeField, Required] DialogueRunner dialogueRunner;
 		[SerializeField, Required] InMemoryVariableStorage storage;
 		[SerializeField, Required] ParticlePaintOnHit brush;
+		[SerializeField, Required] GameObject satisfiedCustomerIcon;
+		[SerializeField, Required] GameObject satisfiedCustomerArea;
+		[SerializeField, Required] FMODUnity.StudioEventEmitter MagicPaintSFX;
+		[SerializeField, Required] FMODUnity.StudioEventEmitter SpeakingSFX;
 		[SerializeField] ParticleCombo wandParticles;
 		[SerializeField] string paintinOrderSource = "/Paintings/";
 		[SerializeField] SceneReference nextScene;
-
 		[SerializeField] List<PaintingOrder> PossibleOrders;
 
 		#region Positional Anchors
@@ -34,6 +41,10 @@ namespace WizOsu {
 		[SerializeField] Transform npcDestinationPos;
 		#endregion
 
+		[Header("Sound")]
+		[SerializeField] FMODUnity.EventReference SFX_MagicPaintSwitch;
+		[SerializeField] FMODUnity.EventReference SFX_EraseDrawingCanvas;
+		[SerializeField] FMODUnity.EventReference SFX_PutUpReference;
 
 		[Header("Game Vars")]
 		[HorizontalLine(color: EColor.Blue)]
@@ -56,7 +67,6 @@ namespace WizOsu {
 		[SerializeField] string clarisNode;
 
 		bool dialogueCompleted;
-		int satisfiedCustomersCnt = 0;
 
 		public override void Awake() {
 			base.Awake();
@@ -73,6 +83,7 @@ namespace WizOsu {
 		}
 
 		public IEnumerator Sequence_MainGameLoop() {
+			DisableAiming(wizard.gameObject);
 			bool waiting = true;
 			TransitionManager.instance.FadeIn(() => waiting = false);
 			while (waiting) yield return null;
@@ -87,13 +98,29 @@ namespace WizOsu {
 			App.Instance.RequestLoad(nextScene.SceneName);
 		}
 
+		public static void EnableAniming(GameObject jobj) {
+			jobj.GetComponentInChildren<Animator>().SetInteger("State", 1);
+			foreach (var obj in jobj.GetComponentsInChildren<AimAtMouse>())
+				obj.enabled = true;
+		}
+
+		public static void DisableAiming(GameObject gobj) {
+			gobj.GetComponentInChildren<Animator>().SetInteger("State", 0);
+			foreach (var obj in gobj.GetComponentsInChildren<AimAtMouse>())
+				obj.enabled = false;
+		}
+
 		public IEnumerator Sequence_PaintingOrder(PaintingOrder order) {
 			npc.GetComponentInChildren<SpriteRenderer>().flipX = false;
 			npc.GetComponentInChildren<SpriteRenderer>().sprite = order.npcSprite;
 			yield return AnimationManager.instance?.DoBunnyHop(npc.transform, npcDestinationPos.position);
 			drawingCanvas.Paintable.ResetTextures();
 			drawingCanvas.Paintable.getRenderer().material.SetTexture("_MainTex", order.lineart);
+			AudioManager.Instance?.PlayOneShot(SFX_EraseDrawingCanvas);
+			yield return new WaitForSeconds(0.5f);
 			referenceCanvas.material.SetTexture("_MainTex", order.referenceImage);
+			AudioManager.Instance?.PlayOneShot(SFX_PutUpReference);
+			yield return new WaitForSeconds(0.5f);
 
 			yield return WaitForDialogue(order.requestNode);
 
@@ -101,22 +128,28 @@ namespace WizOsu {
 			yield return AnimationManager.instance?.DoBunnyHop(npc.transform, npcEntrancePos.position);
 
 			wandParticles?.Activate();
+			MagicPaintSFX?.Play();
 
 			Color[] paletteColors = order.palette.GetPixels();
 
 			Timer workingOnOrder = order.durationSeconds;
 			Timer colorChangeCD = 0;
+
+			EnableAniming(wizard.gameObject);
 			while (workingOnOrder) {
 				if (!colorChangeCD) {
 					Color nxtCol = paletteColors[Mathx.RandomRange(0, paletteColors.Length)];
 					brush.paintColor = nxtCol;
 					brush.GetComponent<ParticleSystemRenderer>().material.SetColor("_EmissionColor", nxtCol);
 					colorChangeCD = Mathx.RandomRange(colorChangeRange);
+					AudioManager.Instance?.PlayOneShot(SFX_MagicPaintSwitch);
 				}
 				yield return null;
 			}
+			DisableAiming(wizard.gameObject);
 
 			wandParticles?.StopProducing();
+			MagicPaintSFX?.Stop();
 
 			float score = TextureDiffUtils.SumSquareDifference(drawingCanvas.GetTexture(), 
 				order.referenceImage);
@@ -135,10 +168,15 @@ namespace WizOsu {
 
 			Reputation += Mathf.Lerp(reputationReward.x, reputationReward.y, EasingFunction.Linear(0, 1, impressiveness));
 
-			satisfiedCustomersCnt += score < order.thresholds.y ? 1 : 0;
-
 			npc.GetComponentInChildren<SpriteRenderer>().flipX = true;
 			yield return AnimationManager.instance?.DoBunnyHop(npc.transform, npcEntrancePos.position);
+
+			bool satisfied = score < order.thresholds.y;
+			satisfiedCustomersCnt += satisfied?1:0;
+
+			if (satisfied) Instantiate(satisfiedCustomerIcon, satisfiedCustomerArea.transform);
+
+			yield return new WaitForSeconds(3f);
 		}
 
 		public IEnumerator Sequence_Squire() {
