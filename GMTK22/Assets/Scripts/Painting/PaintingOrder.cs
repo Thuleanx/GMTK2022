@@ -11,7 +11,6 @@ namespace WizOsu {
 		[SerializeField] string successNode;
 		[SerializeField] string failNode;
 		[SerializeField, Range(0f, 1f)] float successThreshold = .3f;
-		[SerializeField, Range(0, 10f)] float durationMins;
-		[SerializeField, Range(0, 59f)] float durationSeconds;
+		[SerializeField, Range(0, 300f)] float durationSeconds;
 	}
 }
