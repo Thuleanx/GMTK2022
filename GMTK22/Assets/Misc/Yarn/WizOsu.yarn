@@ -1,10 +1,4 @@
-﻿title: Start
-tags:
-position: 47,-133
----
-Claris: Hello what do you want from me
-NPC: Gimme everything you have
-===
+﻿
 title: MillysPainting
 position: -156,77
 ---
@@ -46,4 +40,12 @@ title: ClarisReflect
 position: -241,-231
 ---
 Claris: Wao that's my dream come true
+===
+title: KingCongrats
+position: -158,-12
+---
+NPC: Amazing. I’m speechless. 
+NPC: The bold strokes speak of so much unrestrained personality
+NPC: I hereby declare Claris the Wizard to be Claris the Royal Muralist Wizard
+Claris: Wow.. I actually became a Royal Muralist!! 
 ===

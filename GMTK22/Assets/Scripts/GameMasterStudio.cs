@@ -25,7 +25,7 @@ namespace WizOsu {
 		[SerializeField] string paintinOrderSource = "/Paintings/";
 		[SerializeField] SceneReference nextScene;
 
-		[SerializeField, ReadOnly] List<PaintingOrder> PossibleOrders;
+		[SerializeField] List<PaintingOrder> PossibleOrders;
 
 		#region Positional Anchors
 		[Header("Anchor Positions")]
@@ -60,7 +60,8 @@ namespace WizOsu {
 
 		public override void Awake() {
 			base.Awake();
-			PossibleOrders = new List<PaintingOrder>(Resources.LoadAll<PaintingOrder>(paintinOrderSource));
+			if (PossibleOrders == null || PossibleOrders.Count == 0)
+				PossibleOrders = new List<PaintingOrder>(Resources.LoadAll<PaintingOrder>(paintinOrderSource));
 		}
 
 		void Start() {
@@ -80,7 +81,7 @@ namespace WizOsu {
 				yield return Sequence_PaintingOrder(PossibleOrders[Mathx.RandomRange(0, PossibleOrders.Count)]);
 			yield return Sequence_Squire();
 			waiting = true;
-			TransitionManager.instance.Fadeout(() => waiting = false);
+			TransitionManager.instance.FadeOut(() => waiting = false);
 			while (waiting) yield return null;
 			storage.SetValue("$satCustomerCnt", satisfiedCustomersCnt);
 			App.Instance.RequestLoad(nextScene.SceneName);

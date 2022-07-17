@@ -25,7 +25,19 @@ namespace WizOsu {
 			).Play();
 		}
 
-		public void Fadeout(Action onComplete = null) {
+		public void FadeInImmediate() {
+			Color colT = fader.color; colT.a = 0f;
+			fader.color = colT;
+			fader.raycastTarget = false;
+		}
+
+		public void FadeOutImmediate() {
+			Color colT = fader.color; colT.a = 1f;
+			fader.color = colT;
+			fader.raycastTarget = true;
+		}
+
+		public void FadeOut(Action onComplete = null) {
 			Color colS = fader.color; colS.a = 1f;
 			Color colT = fader.color; colT.a = 0f;
 			fader.raycastTarget = true;
