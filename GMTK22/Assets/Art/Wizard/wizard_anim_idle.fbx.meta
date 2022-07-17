@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: 239070f620c8d468abcf461f61e49061
+guid: 58eb35929da2e4676804f20fa540738f
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable:
   - first:
-      74: 4559346776346659170
-    second: wizard_anim_painting
+      74: -3427355479192807459
+    second: wizard_anim_idle
   externalObjects:
   - first:
       type: UnityEngine:Material
@@ -41,11 +41,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: wizard_anim_painting
-      takeName: wizard_anim_painting
+      name: wizard_anim_idle
+      takeName: wizard_anim_idle
       internalID: 0
       firstFrame: 1
-      lastFrame: 86
+      lastFrame: 43
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -65,70 +65,8 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events: []
-      transformMask:
-      - path: 
-        weight: 1
-      - path: wizard_geo
-        weight: 1
-      - path: wizard_geo/arm_L
-        weight: 1
-      - path: wizard_geo/arm_R
-        weight: 1
-      - path: wizard_geo/body
-        weight: 1
-      - path: wizard_geo/hair_hat
-        weight: 1
-      - path: wizard_geo/head
-        weight: 1
-      - path: wizard_geo/leg_L
-        weight: 1
-      - path: wizard_geo/leg_R
-        weight: 1
-      - path: wizard_skeleton
-        weight: 1
-      - path: wizard_skeleton/jt_root
-        weight: 1
-      - path: wizard_skeleton/jt_root/jt_pelvis
-        weight: 1
-      - path: wizard_skeleton/jt_root/jt_pelvis/jt_chest
-        weight: 1
-      - path: wizard_skeleton/jt_root/jt_pelvis/jt_chest/jt_clavicle_L
-        weight: 1
-      - path: wizard_skeleton/jt_root/jt_pelvis/jt_chest/jt_clavicle_L/jt_arm_L
-        weight: 1
-      - path: wizard_skeleton/jt_root/jt_pelvis/jt_chest/jt_clavicle_L/jt_arm_L/jt_hand_L
-        weight: 1
-      - path: wizard_skeleton/jt_root/jt_pelvis/jt_chest/jt_clavicle_R
-        weight: 1
-      - path: wizard_skeleton/jt_root/jt_pelvis/jt_chest/jt_clavicle_R/jt_arm_R
-        weight: 0
-      - path: wizard_skeleton/jt_root/jt_pelvis/jt_chest/jt_clavicle_R/jt_arm_R/jt_hand_R
-        weight: 0
-      - path: wizard_skeleton/jt_root/jt_pelvis/jt_chest/jt_neck
-        weight: 0
-      - path: wizard_skeleton/jt_root/jt_pelvis/jt_chest/jt_neck/jt_head_top
-        weight: 0
-      - path: wizard_skeleton/jt_root/jt_pelvis/jt_chest/jt_neck/jt_head_top/jt_hair
-        weight: 0
-      - path: wizard_skeleton/jt_root/jt_pelvis/jt_chest/jt_neck/jt_head_top/jt_hair/jt_hair_end
-        weight: 0
-      - path: wizard_skeleton/jt_root/jt_pelvis/jt_chest/jt_neck/jt_head_top/jt_hat
-        weight: 0
-      - path: wizard_skeleton/jt_root/jt_pelvis/jt_chest/jt_neck/jt_head_top/jt_hat/jt_hat_end
-        weight: 0
-      - path: wizard_skeleton/jt_root/jt_pelvis/jt_leg_L
-        weight: 1
-      - path: wizard_skeleton/jt_root/jt_pelvis/jt_leg_L/jt_foot_L
-        weight: 1
-      - path: wizard_skeleton/jt_root/jt_pelvis/jt_leg_L/jt_foot_L/jt_toe_L
-        weight: 1
-      - path: wizard_skeleton/jt_root/jt_pelvis/jt_leg_R
-        weight: 1
-      - path: wizard_skeleton/jt_root/jt_pelvis/jt_leg_R/jt_foot_R
-        weight: 1
-      - path: wizard_skeleton/jt_root/jt_pelvis/jt_leg_R/jt_foot_R/jt_toe_R
-        weight: 1
-      maskType: 0
+      transformMask: []
+      maskType: 3
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 1
     isReadable: 0
