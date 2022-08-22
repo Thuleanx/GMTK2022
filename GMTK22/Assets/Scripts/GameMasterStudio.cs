@@ -89,8 +89,13 @@ namespace WizOsu {
 			TransitionManager.instance.FadeIn(() => waiting = false);
 			while (waiting) yield return null;
 			if (PlayIntro) yield return IntroSequence();
-			while (Reputation < ReputationRequired)
-				yield return Sequence_PaintingOrder(PossibleOrders[Mathx.RandomRange(0, PossibleOrders.Count)]);
+			int last = -1;
+			while (Reputation < ReputationRequired) {
+				int cur;
+				while ((cur = Mathx.RandomRange(0, PossibleOrders.Count)) == last);
+				yield return Sequence_PaintingOrder(PossibleOrders[cur]);
+				last = cur;
+			}
 			yield return Sequence_Squire();
 			waiting = true;
 			TransitionManager.instance.FadeOut(() => waiting = false);
