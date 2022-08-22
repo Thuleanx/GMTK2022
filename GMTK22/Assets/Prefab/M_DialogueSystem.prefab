@@ -256,7 +256,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0.8818593, b: 1, a: 0.6313726}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -288,6 +288,7 @@ MonoBehaviour:
   attachedSpeaker: {fileID: 0}
   textObj: {fileID: 3127571551646346264}
   padding: {x: 20.07, y: 12.61}
+  screenPadding: {x: 0.15, y: 0.15}
 --- !u!1 &3127571551072147216
 GameObject:
   m_ObjectHideFlags: 0
