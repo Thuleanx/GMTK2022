@@ -1030,6 +1030,11 @@ PrefabInstance:
       propertyPath: paintingCanvas.value
       value: 
       objectReference: {fileID: 605607825}
+    - target: {fileID: 4987048083612283476, guid: e31711c0e401f4bd4b05f104e1c0d991,
+        type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 1.4
+      objectReference: {fileID: 0}
     - target: {fileID: 5057813517720509056, guid: e31711c0e401f4bd4b05f104e1c0d991,
         type: 3}
       propertyPath: paintingCanvas.value
@@ -1039,6 +1044,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5901268297684534197, guid: e31711c0e401f4bd4b05f104e1c0d991,
+        type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 1.6
       objectReference: {fileID: 0}
     - target: {fileID: 6364324372054479691, guid: e31711c0e401f4bd4b05f104e1c0d991,
         type: 3}
