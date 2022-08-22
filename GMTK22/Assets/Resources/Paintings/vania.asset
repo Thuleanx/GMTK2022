@@ -19,5 +19,5 @@ MonoBehaviour:
   npcSprite: {fileID: 21300000, guid: 07f214d379ecf4d479c05ab40f2067cd, type: 3}
   requestNode: VaniaRequest
   evalNode: VaniaResult
-  thresholds: {x: 0.13668343, y: 0.24346736}
+  thresholds: {x: 0.1, y: 0.3}
   durationSeconds: 60

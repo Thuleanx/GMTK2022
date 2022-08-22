@@ -154,7 +154,7 @@ position: -797,217
 ---
 NPC: .. This makes me think of when Doo and Dee first started dancing.. it’s terrible..
 ===
-title: MilyRequest
+title: MillyRequest
 position: -942,-432
 ---
 NPC: ~I’d LOVEEE a painting of me and my pet bunny, Poppy! It should have me and Poppy lookin’ SUPER adorbs and have my green hat and a red background and-
@@ -179,10 +179,10 @@ title: MillyResult
 position: -753,-364
 ---
 <<if $score < $threshold0>>
-	<<jump MilyGreat>>
+	<<jump MillyGreat>>
 <<elseif $score < $threshold1>>
-	<<jump MilyDecent>>
+	<<jump MillyDecent>>
 <<else>>
-	<<jump MilyYikes>>
+	<<jump MillyYikes>>
 <<endif>>
 ===

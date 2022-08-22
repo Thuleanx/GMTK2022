@@ -19,7 +19,7 @@ namespace WizOsu {
 			for (int i = 0; i < numRow; i++) for (int j = 0; j < numCol; j++) {
 				float pu = (float)i / (numRow - 1);
 				float pv = (float)i / (numCol- 1);
-				S_sq += SquareDistance(t1.GetPixelBilinear(pu, pv), t2.GetPixelBilinear(pu, pv), ref normalizer);
+				S_sq += CorrectPixel(t1.GetPixelBilinear(pu, pv), t2.GetPixelBilinear(pu, pv), ref normalizer);
 			}
 			return normalizer > 0 ? S_sq / normalizer : 0f;
 		}
@@ -34,7 +34,7 @@ namespace WizOsu {
 			float S_sq = 0;
 			float normalizer = 0;
 			for (int i = 0; i < Mathf.Min(colT1.Length, colT2.Length); i++)
-				S_sq += SquareDistance(colT1[i], colT2[i], ref normalizer);
+				S_sq += CorrectPixel(colT1[i], colT2[i], ref normalizer);
 			return normalizer > 0 ? S_sq / normalizer : 0f;
 		}
 
@@ -76,13 +76,18 @@ namespace WizOsu {
 
 		static float SquareDistance(Color c1, Color c2, ref float normalizer) {
 			float res = 0;
-			normalizer += Mathx.Square(c1.grayscale) + Mathx.Square(c2.grayscale);
-			res += Mathx.Square((c1 - c2).grayscale);
-			// for (int j = 0; j < 3; j++) {
-			// 	normalizer += Mathx.Square(c1[j]) + Mathx.Square(c2[j]);
-			// 	res += Mathx.Square(c1[j] - c2[j]);
-			// }
+			// normalizer += Mathx.Square(c1.grayscale) + Mathx.Square(c2.grayscale);
+			// res += Mathx.Square((c1 - c2).grayscale);
+			for (int j = 0; j < 3; j++) {
+				normalizer += Mathx.Square(c1[j]) + Mathx.Square(c2[j]);
+				res += Mathx.Square(c1[j] - c2[j]);
+			}
 			return res;
+		}
+		static float CorrectPixel(Color c1, Color c2, ref float normalizer) {
+			normalizer += 1;
+			for (int j = 0; j < 3; j++) if (Mathf.Abs(c1[j] - c2[j]) > .1f) return 1f;
+			return 0f;
 		}
 		static float CrossCorrelate(Color c1, Color c2, ref float normalizer) {
 			float res = 0;
