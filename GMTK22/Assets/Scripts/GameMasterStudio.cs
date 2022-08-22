@@ -187,8 +187,8 @@ namespace WizOsu {
 
 			yield return WaitForDialogue(order.evalNode);
 
-			float impressiveness = Mathf.InverseLerp(1 - order.thresholds.y, 1, 
-				Mathf.Max(1 - score, 1 - order.thresholds.y));
+			float impressiveness = Mathf.Clamp(1 - Mathf.InverseLerp(order.thresholds.x, order.thresholds.y, 
+				score), 0, 1f);
 
 			Reputation += Mathf.Lerp(reputationReward.x, reputationReward.y, EasingFunction.Linear(0, 1, impressiveness));
 
