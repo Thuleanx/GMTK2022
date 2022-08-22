@@ -1,35 +1,5 @@
-﻿
-title: MillysPainting
-position: -156,77
----
-Claris: How can I help you?
-NPC: Please color this in for me. 
-NPC: I appreciate it.
-===
-title: MillyEvaluate
-position: -156,170
----
-<<if $score < $threshold1>>
-	<<jump MillyApproved>>
-<<else>>
-	<<jump MillyDisapproved>>
-<<endif>>
-===
-title: MillyApproved
-position: 83,261
----
-NPC: Yo good job dude
-NPC: Now I can show this to all my friends
-===
-title: MillyDisapproved
-position: 91,116
----
-NPC: Bro that kinda sucks
-Claris: I tried my best
-NPC: Your best isn't good enough
-===
-title: AlfredInvite
-position: -239,-289
+﻿title: AlfredInvite
+position: -352,-278
 ---
 NPC: Ehem.
 NPC: Claris the Wizard, you have gained much fame with your expressive and passionate paintings, and have thus captured the attention of THE ROYAL KING.
@@ -37,23 +7,27 @@ NPC: THE ROYAL KING would hereby like to commission a grand mural to grace one o
 NPC: We will await your arrival at the gate
 ===
 title: ClarisReflect
-position: -241,-231
+position: -342,-214
 ---
-Claris: Wao that's my dream come true
+Claris: Unbelievable! It’s a dream come true! I finally get a chance to express myself in front of the highest audience in the land!
 ===
 title: KingCongrats
-position: -158,-12
+position: -354,-27
 ---
 NPC: Amazing. I’m speechless. 
-NPC: The bold strokes speak of so much unrestrained personality
-NPC: I hereby declare Claris the Wizard to be Claris the Royal Muralist Wizard
-Claris: Wow.. I actually became a Royal Muralist!! 
+NPC: The bold and vibrant strokes are a true testament to your magical art prowess.
+NPC: The splotches.. especially speak to me.
+NPC: I hereby declare Claris the Wizard to be Claris the Royal Muralist Wizard!
+Claris: Wow.. I actually became a Royal Muralist!!
+Claris: My dreams shone through my wild color magic and I think I’ve really gotten the hang of it now!
+Claris: I can’t wait spread my happiness and bring light and color
+Claris: to every life in every corner of the kingdom!
 ===
 title: BrandonRequest
-position: -447,50
+position: -886,410
 ---
-Claris: How can I help you?
-NPC: Can you paint me this island photo?
+NPC: Paint me a picture of the nearby Boreas Coastline. 
+NPC: The mountains should be a bold green with an imposing sun commanding the sky.
 ===
 title: StandardResults
 position: -616,287
@@ -83,20 +57,132 @@ NPC: This sucks!
 Claris: But I really tried my best
 ===
 title: FrancisRequest
-position: -427,-68
+position: -1016,91
 ---
-Claris: Hello there. Can I help you
-NPC: umm.... can you paint me these two cats
-Claris: Of course
+NPC: Could you please.. paint my two purple cats Doo and Dee in little pink tutus?
+NPC: I just think they’d be really cute in them.. I’ve been trying to teach them ballet.. thanks..
 ===
 title: VaniaRequest
-position: -582,-168
+position: -943,-198
 ---
-Claris: What brings you in today
-NPC: I've got something for you to work on
+NPC: My mantel is in need of a peaceful nature scene. Please paint three cherry blossom trees with a delightfully blue sky and soft green grass.
 ===
 title: AlfredRequest
-position: -308,52.5
+position: -347,-93
 ---
-NPC: Paint to your heart's content. I will be back shortly
+NPC: THE ROYAL KING requests a magnificent mural to represent our glorious kingdom.
+NPC: Your creative voice has stood out and your name echoes across the land.
+NPC: Please paint your own artistic vision for the world- for all to see!
+===
+title: BrandonResult
+position: -884,488
+---
+<<if $score < $threshold0>>
+	<<jump BrandonGreat>>
+<<elseif $score < $threshold1>>
+	<<jump BrandonDecent>>
+<<else>>
+	<<jump BrandonYikes>>
+<<endif>>
+===
+title: BrandonGreat
+position: -881,592
+---
+NPC:  Incredible! I don’t even need to go to Boreas anymore, I have a piece of it right here!
+===
+title: BrandonDecent
+position: -700,589
+---
+NPC: The coastline isn’t well defined and the mountains look like hills, but it’s fine. 
+NPC: I’ll come back for a better one sometime.
+===
+title: BrandonYikes
+position: -776,670
+---
+NPC: That is a disgrace of a coastline. The ocean would wash that away in seconds. 
+NPC: I need a vacation to Boreas to wash my eyes of this.
+===
+title: VaniaGreat
+position: -941,-125
+---
+NPC:  I can feel a gentle breeze emanating from the sky and the petals seem to fly off the canvas.. thank you.
+===
+title: VaniaDecent
+position: -710,-114
+---
+NPC: How pedestrian. But I suppose this will do for now. Until next time.
+===
+title: VaniaYikes
+position: -713,-23
+---
+NPC: This hardly resembles the tranquil scene I laid out to you just earlier. Honestly you’ve gone in the complete opposite direction. How disappointing.
+===
+title: VaniaResult
+position: -944,-31
+---
+<<if $score < $threshold0>>
+	<<jump VaniaGreat>>
+<<elseif $score < $threshold1>>
+	<<jump VaniaDecent>>
+<<else>>
+	<<jump VaniaYikes>>
+<<endif>>
+===
+title: FrancisResult
+position: -1016,154
+---
+<<if $score < $threshold0>>
+	<<jump FrancisGreat>>
+<<elseif $score < $threshold1>>
+	<<jump FrancisDecent>>
+<<else>>
+	<<jump FrancisYikes>>
+<<endif>>
+===
+title: FrancisGreat
+position: -800,155
+---
+NPC: .. Wow.. they look like prima ballerinas.. I hope their dances will shine this brightly someday!
+===
+title: FrancisDecent
+position: -1018,215
+---
+NPC: Aww.. they’re cute.. Their movements look blurred but I can tell they’re trying..
+===
+title: FrancisYikes
+position: -797,217
+---
+NPC: .. This makes me think of when Doo and Dee first started dancing.. it’s terrible..
+===
+title: MilyRequest
+position: -942,-432
+---
+NPC: ~I’d LOVEEE a painting of me and my pet bunny, Poppy! It should have me and Poppy lookin’ SUPER adorbs and have my green hat and a red background and-
+===
+title: MillyGreat
+position: -939,-359
+---
+NPC: OMGTHISISAMAZING!!! I LOoOOOooOOVEEEE IT, thank you so much! ;)
+===
+title: MillyDecent
+position: -754,-438
+---
+NPC: Hmph this looks ok I guess. I think you could’ve made us cuter though. :|
+===
+title: MillyYikes
+position: -572,-362
+---
+NPC: What the- what even is this? I’m shaking with anger!! 
+NPC: I’ll be back to make you do it again BETTER >:(
+===
+title: MillyResult
+position: -753,-364
+---
+<<if $score < $threshold0>>
+	<<jump MilyGreat>>
+<<elseif $score < $threshold1>>
+	<<jump MilyDecent>>
+<<else>>
+	<<jump MilyYikes>>
+<<endif>>
 ===

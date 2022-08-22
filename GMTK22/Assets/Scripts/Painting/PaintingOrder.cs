@@ -8,7 +8,7 @@ namespace WizOsu {
 		[Required] public Texture2D referenceImage;
 		[Required] public Texture2D displayImage;
 		[Required] public Texture2D lineart;
-		[Required] public Sprite npcSprite;
+		[Required, ShowAssetPreview] public Sprite npcSprite;
 		public string requestNode;
 		public string evalNode;
 		[MinMaxSlider(0, 1f)] public Vector2 thresholds = Vector2.one * .3f;

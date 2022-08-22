@@ -17,7 +17,7 @@ MonoBehaviour:
   displayImage: {fileID: 2800000, guid: 1e73f75a07986fc4087e67a9f2bc4180, type: 3}
   lineart: {fileID: 2800000, guid: 4cbe5f120b897fd43b12551017f355d9, type: 3}
   npcSprite: {fileID: 21300000, guid: 8bbb1a1311b7943d9b4a430d5018294a, type: 3}
-  requestNode: MillysPainting
-  evalNode: MillyEvaluate
+  requestNode: MillyRequest
+  evalNode: MillyResult
   thresholds: {x: 0.13668343, y: 0.24346736}
   durationSeconds: 60
