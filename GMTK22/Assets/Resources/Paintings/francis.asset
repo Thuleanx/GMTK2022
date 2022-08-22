@@ -19,5 +19,5 @@ MonoBehaviour:
   npcSprite: {fileID: 21300000, guid: 34c06a667f26642bcb0887d2ba59359e, type: 3}
   requestNode: FrancisRequest
   evalNode: FrancisResult
-  thresholds: {x: 0.6, y: 0.85}
+  thresholds: {x: 0.5, y: 0.85}
   durationSeconds: 60

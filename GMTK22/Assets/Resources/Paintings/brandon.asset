@@ -19,5 +19,5 @@ MonoBehaviour:
   npcSprite: {fileID: 21300000, guid: 7b5c40c7646c64b12aefae573e1d3043, type: 3}
   requestNode: BrandonRequest
   evalNode: BrandonResult
-  thresholds: {x: 0.6, y: 0.9}
+  thresholds: {x: 0.52059895, y: 0.75254077}
   durationSeconds: 60
