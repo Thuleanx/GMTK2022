@@ -16,7 +16,7 @@ using Thuleanx.Audio;
 
 namespace WizOsu {
 	public class GameMasterStudio : Singleton<GameMasterStudio> {
-		public static int satisfiedCustomersCnt = 7;
+		public static int satisfiedCustomersCnt = 0;
 
 		[Header("References")]
 		[SerializeField, Required] GameObject wizard;
