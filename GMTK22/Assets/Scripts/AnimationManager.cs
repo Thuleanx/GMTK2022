@@ -18,7 +18,7 @@ namespace WizOsu.Animation {
 			moveX.Play();
 			moveZ.Play();
 			Sequence seq = DOTween.Sequence();
-			float curHeight = obj.position.y;
+			float curHeight = destination.y;
 			seq.InsertCallback(0, () => {
 				AudioManager.Instance?.PlayOneShot(hopSound);
 			});

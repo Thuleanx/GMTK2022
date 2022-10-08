@@ -137,6 +137,7 @@ namespace WizOsu {
 		public IEnumerator Sequence_PaintingOrder(PaintingOrder order) {
 			npc.GetComponentInChildren<SpriteRenderer>().flipX = false;
 			npc.GetComponentInChildren<SpriteRenderer>().sprite = order.npcSprite;
+			npc.transform.position = npcEntrancePos.position;
 			yield return AnimationManager.instance?.DoBunnyHop(npc.transform, npcDestinationPos.position);
 			drawingCanvas.Paintable.ResetTextures();
 			drawingCanvas.Paintable.getRenderer().material.SetTexture("_MainTex", order.lineart);
