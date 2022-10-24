@@ -119,6 +119,7 @@ namespace WizOsu {
 		public IEnumerator Sequence_Squire() {
 			npc.GetComponentInChildren<SpriteRenderer>().flipX = false;
 			npc.GetComponentInChildren<SpriteRenderer>().sprite = squireSprite;
+			npc.transform.position = npcEntrancePos.position;
 			yield return AnimationManager.instance?.DoBunnyHop(npc.transform, npcDestinationPos.position);
 
 			yield return WaitForDialogue(requestNode);
